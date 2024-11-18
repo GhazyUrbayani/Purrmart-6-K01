@@ -16,16 +16,20 @@
 
 # Cara Menjalankan Tester
 
-```
+## Kompilasi Tester
+### Pastikan Anda berada di folder `src/ADT`. Gunakan perintah berikut untuk setiap tester:
 
-Kompilasi Tester: Pastikan Anda berada di folder src/ADT. Gunakan perintah berikut untuk setiap tester:
-
+```bash
 gcc -o tester_listdin listdin.c tester_listdin.c
 gcc -o tester_queue queue.c tester_queue.c
 gcc -o tester_stack stack.c tester_stack.c
+```
 
-Jalankan Tester: Jalankan program hasil kompilasi:
+## Jalankan Tester
+### Jalankan program hasil kompilasi:
 
+```bash
+```
 ./tester_listdin
 ./tester_queue
 ./tester_stack

@@ -34,7 +34,7 @@
 - │   ├── console.h          # Header untuk commands
 - │   ├── main.c             # Entry point aplikasi
 - └── README.md          # Dokumentasi project
-*Dokumen pendukung tugas besar di Folder G-Drive
+- *Dokumen pendukung tugas besar yang lain dan lebih lengkap di Folder G-Drive
 
 ---
 

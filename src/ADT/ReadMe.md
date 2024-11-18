@@ -14,16 +14,16 @@
 - │   │   ├── stack.c     # Implementasi Stack
 - │   │   ├── tester_stack.c    # Driver/testing Stack
 
-## Cara Menjalankan Tester
+# Cara Menjalankan Tester
 
-Kompilasi Tester: Pastikan Anda berada di folder src/ADT. Gunakan perintah berikut untuk setiap tester:
+```Kompilasi Tester: Pastikan Anda berada di folder src/ADT. Gunakan perintah berikut untuk setiap tester:
 
-```gcc -o tester_listdin listdin.c tester_listdin.c
+gcc -o tester_listdin listdin.c tester_listdin.c
 gcc -o tester_queue queue.c tester_queue.c
-gcc -o tester_stack stack.c tester_stack.c```
+gcc -o tester_stack stack.c tester_stack.c
 
 Jalankan Tester: Jalankan program hasil kompilasi:
 
-- `./tester_listdin`
-- `./tester_queue`
-- `./tester_stack`
+./tester_listdin
+./tester_queue
+./tester_stack

@@ -27,9 +27,8 @@ gcc -o tester_stack stack.c tester_stack.c
 
 ## Jalankan Tester
 ### Jalankan program hasil kompilasi:
-
 ```bash
-```
 ./tester_listdin
 ./tester_queue
 ./tester_stack
+```

@@ -52,5 +52,4 @@
    cd PURRMART-CLI
 
 ## Catatan
-- Dokumentasi lengkap dapat dilihat pada folder `docs/`
-- Pastikan file konfigurasi awal berada di folder `save/`
+Pastikan file konfigurasi awal berada di folder `save/`

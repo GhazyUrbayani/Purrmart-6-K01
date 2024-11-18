@@ -36,6 +36,8 @@
 - └── README.md          # Dokumentasi project
 *Dokumen pendukung tugas besar di Folder G-Drive
 
+---
+
 ## Identitas Kelompok
 - Nama Anggota 1: [	Inggried Amelia Deswanty] (NIM: 18223035)
 - Nama Anggota 2: [	M. Andiananto Bismaramadhan] (NIM: 18221028)

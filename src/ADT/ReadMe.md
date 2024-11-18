@@ -16,7 +16,9 @@
 
 # Cara Menjalankan Tester
 
-```Kompilasi Tester: Pastikan Anda berada di folder src/ADT. Gunakan perintah berikut untuk setiap tester:
+```
+
+Kompilasi Tester: Pastikan Anda berada di folder src/ADT. Gunakan perintah berikut untuk setiap tester:
 
 gcc -o tester_listdin listdin.c tester_listdin.c
 gcc -o tester_queue queue.c tester_queue.c

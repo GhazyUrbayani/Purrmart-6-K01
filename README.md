@@ -25,12 +25,25 @@
 ---
 
 ## Struktur Folder
+.
+├── bin/               # File binary hasil kompilasi
+├── save/              # Folder untuk menyimpan File save state
+├── src/               # Source code utama
+│   ├── ADT/           # Folder berisi ADT yang digunakan
+│   ├── console.c      # Implementasi commands
+│   ├── console.h      # Header untuk commands
+│   ├── main.c         # Entry point aplikasi
+└── README.md          # Dokumentasi project
+# Dokumen pendukung tugas besar di Folder G-Drive
 
 ## Identitas Kelompok
-Nama Anggota 1: [Nama] (NIM: XXX)
-Nama Anggota 2: [Nama] (NIM: XXX)
-Nama Anggota 3: [Nama] (NIM: XXX)
-Nama Anggota 4: [Nama] (NIM: XXX)
+- Nama Anggota 1: [	Inggried Amelia Deswanty] (NIM: 18223035)
+- Nama Anggota 2: [	M. Andiananto Bismaramadhan] (NIM: 18221028)
+- Nama Anggota 3: [	Muhammad Faiz Alfikrona] (NIM: 18223009)
+- Nama Anggota 4: [	Noeriza Aqila Wibawa] (NIM: 18223095)
+- Nama Anggota 5: [Ghazy Achmed Movlech Urbayani] (NIM: 18223093)
+
+---
 
 ## Cara Kompilasi dan Menjalankan Program
 1. **Clone Repository**
@@ -39,5 +52,5 @@ Nama Anggota 4: [Nama] (NIM: XXX)
    cd PURRMART-CLI
 
 ## Catatan
-- Dokumentasi lengkap dapat dilihat pada folder docs/.
-- Pastikan file konfigurasi awal berada di folder save/
+- Dokumentasi lengkap dapat dilihat pada folder `docs/`
+- Pastikan file konfigurasi awal berada di folder `save/`

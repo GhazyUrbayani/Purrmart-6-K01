@@ -1,18 +1,18 @@
 # Struktur Folder
 
-- ├── ADT/
-- │   ├── listdin/
-- │   │   ├── listdin.h   # Header untuk ListDin
-- │   │   ├── listdin.c   # Implementasi ListDin
-- │   │   ├── tester_listdin.c    # Driver/testing ListDin
-- │   ├── queue/
-- │   │   ├── queue.h     # Header untuk Queue
-- │   │   ├── queue.c     # Implementasi Queue
-- │   │   ├── tester_queue.c    # Driver/testing Queue
-- │   ├── stack/
-- │   │   ├── stack.h     # Header untuk Stack
-- │   │   ├── stack.c     # Implementasi Stack
-- │   │   ├── tester_stack.c    # Driver/testing Stack
+├── ADT/
+│   ├── listdin/
+│   │   ├── listdin.h   # Header untuk ListDin
+│   │   ├── listdin.c   # Implementasi ListDin
+│   │   ├── tester_listdin.c    # Driver/testing ListDin
+│   ├── queue/
+│   │   ├── queue.h     # Header untuk Queue
+│   │   ├── queue.c     # Implementasi Queue
+│  │   ├── tester_queue.c    # Driver/testing Queue
+ │   ├── stack/
+ │   │   ├── stack.h     # Header untuk Stack
+│   │   ├── stack.c     # Implementasi Stack
+│   │   ├── tester_stack.c    # Driver/testing Stack
 
 ## Cara Menjalankan Tester
 

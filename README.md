@@ -26,15 +26,15 @@
 
 ## Struktur Folder
 .
-├── bin/               # File binary hasil kompilasi
-├── save/              # Folder untuk menyimpan File save state
-├── src/               # Source code utama
-│   ├── ADT/           # Folder berisi ADT yang digunakan
-│   ├── console.c      # Implementasi commands
-│   ├── console.h      # Header untuk commands
-│   ├── main.c         # Entry point aplikasi
-└── README.md          # Dokumentasi project
-# Dokumen pendukung tugas besar di Folder G-Drive
+- ├── bin/               # File binary hasil kompilasi
+- ├── save/              # Folder untuk menyimpan File save state
+- ├── src/               # Source code utama
+- ├── ADT/               # Folder berisi ADT yang digunakan
+- ├── console.c          # Implementasi commands
+- ├── console.h          # Header untuk commands
+- ├── main.c             # Entry point aplikasi
+- └── README.md          # Dokumentasi project
+*Dokumen pendukung tugas besar di Folder G-Drive
 
 ## Identitas Kelompok
 - Nama Anggota 1: [	Inggried Amelia Deswanty] (NIM: 18223035)

@@ -11,13 +11,14 @@ void CreateStack(Stack *s) {
 
 /* Mengecek apakah Stack kosong */
 bool IsEmpty(Stack s) {
-    return s.top == -1;
+    return s.top == -1; // true jika top == -1
     // Reminder: Top = -1 berarti tidak ada elemen di Stack
 }
 
 /* Mengecek apakah Stack penuh */
 bool IsFull(Stack s) {
-    return s.top == CAPACITY - 1;
+    // Tambahkan elemen di indeks top+1
+    return s.top == CAPACITY - 1; // true jika top mencapai kapasitas
     // Reminder: Top = CAPACITY - 1 berarti Stack penuh
 }
 
@@ -32,6 +33,7 @@ void Push(Stack *s, ElType val) {
 /* Menghapus elemen dari atas Stack */
 void Pop(Stack *s, ElType *val) {
     if (!IsEmpty(*s)) {
+        // Ambil elemen pada top dan kurangi top
         *val = s->buffer[s->top--];
         // Reminder: Elemen di top dihapus, top diperbarui
     }

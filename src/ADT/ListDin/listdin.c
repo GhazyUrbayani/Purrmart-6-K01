@@ -31,10 +31,12 @@ bool IsFull(ListDin l) {
 
 /* Menambahkan elemen di akhir list */
 void InsertLast(ListDin *l, int val) {
-    if (!IsFull(*l)) {
-        // Tambahkan elemen pada indeks terakhir
-        l->buffer[l->neff++] = val;
+    if (IsFull(*l)) {
+        int newCapacity = l->capacity * 2;
+        l->buffer = (int *)realloc(l->buffer, newCapacity * sizeof(int));
+        l->capacity = newCapacity;
     }
+    l->buffer[l->neff++] = val;
 }
 
 /* Menghapus elemen di akhir list */

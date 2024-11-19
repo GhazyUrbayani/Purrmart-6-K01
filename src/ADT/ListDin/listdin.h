@@ -62,8 +62,8 @@ bool IsFull(ListDin l);
 /* *** Operasi ListDin *** */
 /**
  * Menambahkan elemen di akhir list.
- * Initial State: ListDin tidak penuh.
- * Final State: Elemen baru ditambahkan pada indeks ke-neff, dan nilai neff bertambah 1.
+ * Initial State: ListDin ada.
+ * Final State: Realokasi memori baru kalau List awal penuh, elemen baru ditambahkan pada indeks ke-neff, dan nilai neff bertambah 1.
  * Parameter:
  *   - l: pointer ke ListDin tempat elemen akan ditambahkan.
  *   - val: nilai elemen yang akan ditambahkan.
@@ -79,6 +79,10 @@ void InsertLast(ListDin *l, int val);
  *   - val: pointer ke integer untuk menyimpan elemen yang dihapus.
  */
 void DeleteLast(ListDin *l, int *val);
+
+void DeleteFirst(ListDin *l, int *val);
+/* IS: ListDin tidak kosong */
+/* FS: Elemen pertama dihapus, nilai elemen disimpan di `val`. Elemen lain digeser ke kiri */
 
 /**
  * Mencari indeks elemen dengan nilai tertentu di list.

@@ -47,6 +47,17 @@ void DeleteLast(ListDin *l, int *val) {
     }
 }
 
+/* Menghapus elemen pertama dari list */
+void DeleteFirst(ListDin *l, int *val) {
+    if (!IsEmpty(*l)) {
+        *val = l->buffer[0];
+        for (int i = 0; i < l->neff - 1; i++) {
+            l->buffer[i] = l->buffer[i + 1];
+        }
+        l->neff--;
+    }
+}
+
 /* Mencari indeks elemen di list */
 int Find(ListDin l, int val) {
     for (int i = 0; i < l.neff; i++) {

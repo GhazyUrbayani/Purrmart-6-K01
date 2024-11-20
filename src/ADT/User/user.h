@@ -2,8 +2,9 @@
 #define USER_H
 
 #include "../boolean.h"
+#include "../mesinkata.h" // Menggunakan fungsi salinan string dari MesinKata
 
-#define MAX_LEN 50 // Panjang maksimum untuk nama dan password
+#define MAX_LEN 100 // Panjang maksimum untuk nama dan password
 
 typedef struct {
     char name[MAX_LEN];      // Nama pengguna

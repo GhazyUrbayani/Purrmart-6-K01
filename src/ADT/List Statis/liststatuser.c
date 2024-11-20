@@ -1,4 +1,4 @@
-#include "liststatisuser.h"
+#include "liststatuser.h"
 
 /* Membuat list statis kosong */
 void CreateListStatUser(ListStatUser *l) {

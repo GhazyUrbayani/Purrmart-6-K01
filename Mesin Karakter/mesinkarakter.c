@@ -1,5 +1,6 @@
 #include "mesinkarakter.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 /* State Mesin Karakter */
 char currentChar;

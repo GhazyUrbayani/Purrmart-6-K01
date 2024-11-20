@@ -6,47 +6,150 @@
 #include "../mesinkata.h"
 #include "../boolean.h"
 
-/* Definisi kapasitas maksimum elemen string */
+/*  Kamus Umum */
+#define IDX_MIN 0
+#define IDX_UNDEF -1
 #define NMax 150
 
-/* Definisi tipe elemen berupa string */
-typedef char* ElType;
+typedef char* ElType; // Elemen berupa string
 
-/* Definisi struktur ListDin */
 typedef struct {
-    ElType *buffer; // Array dinamis untuk menyimpan elemen
+    ElType *buffer; // Array dinamis untuk menyimpan string
     int capacity;   // Kapasitas maksimum list
     int neff;       // Jumlah elemen efektif
 } ListDin;
 
 /* *** Konstruktor dan Destruktor *** */
-void CreateListDin(ListDin *l, int capacity);
-/* IS: List belum teralokasi */
-/* FS: List dialokasikan dengan kapasitas `capacity` dan elemen kosong */
 
+/**
+ * Membuat ListDin kosong.
+ * Initial State: List belum teralokasi (pointer buffer tidak valid).
+ * Final State: List teralokasi dengan kapasitas `capacity`, elemen kosong (neff = 0).
+ * Parameter:
+ *   - l: Pointer ke ListDin yang akan dibuat.
+ *   - capacity: Kapasitas awal list.
+ */
+void CreateListDin(ListDin *l, int capacity);
+
+/**
+ * Menghapus ListDin dari memori.
+ * Initial State: List teralokasi dan berisi sejumlah elemen (neff >= 0).
+ * Final State: List dibebaskan dari memori (pointer buffer = NULL, capacity = 0, neff = 0).
+ * Parameter:
+ *   - l: Pointer ke ListDin yang akan dihapus.
+ */
 void DeallocateListDin(ListDin *l);
-/* IS: List teralokasi */
-/* FS: List dibebaskan dari memori, termasuk semua elemen */
 
 /* *** Fungsi dan Validasi *** */
+
+/**
+ * Mengecek apakah ListDin kosong.
+ * Initial State: List valid (teralokasi).
+ * Final State: Tidak ada perubahan pada list.
+ * Parameter:
+ *   - l: ListDin yang diperiksa.
+ * Return:
+ *   - true jika list kosong (neff == 0), false jika tidak.
+ */
 boolean IsEmpty(ListDin l);
-/* Mengembalikan true jika list kosong */
 
+/**
+ * Mengecek apakah ListDin penuh.
+ * Initial State: List valid (teralokasi).
+ * Final State: Tidak ada perubahan pada list.
+ * Parameter:
+ *   - l: ListDin yang diperiksa.
+ * Return:
+ *   - true jika list penuh (neff == capacity), false jika tidak.
+ */
 boolean IsFull(ListDin l);
-/* Mengembalikan true jika list penuh */
 
-/* *** Operasi ListDin *** */
-void InsertLast(ListDin *l, ElType val);
-/* IS: List teralokasi */
-/* FS: Elemen `val` ditambahkan di akhir list. Jika penuh, kapasitas diperbesar */
+/**
+ * Mengembalikan indeks pertama elemen dalam list.
+ * Initial State: List valid (teralokasi).
+ * Final State: Tidak ada perubahan pada list.
+ * Parameter:
+ *   - l: ListDin yang diperiksa.
+ * Return:
+ *   - Indeks pertama elemen dalam list (IDX_MIN) jika tidak kosong, IDX_UNDEF jika kosong.
+ */
+int GetFirstIdx(ListDin l);
 
+/**
+ * Mengembalikan indeks terakhir elemen dalam list.
+ * Initial State: List valid (teralokasi).
+ * Final State: Tidak ada perubahan pada list.
+ * Parameter:
+ *   - l: ListDin yang diperiksa.
+ * Return:
+ *   - Indeks terakhir elemen dalam list jika tidak kosong, IDX_UNDEF jika kosong.
+ */
+int GetLastIdx(ListDin l);
+
+/* *** Operasi Dasar ListDin *** */
+
+/**
+ * Menambahkan elemen string di akhir list.
+ * Initial State: List valid (teralokasi), dapat penuh atau tidak penuh.
+ * Final State: Elemen `w` ditambahkan ke akhir list. Jika penuh, kapasitas list diperbesar.
+ * Parameter:
+ *   - l: Pointer ke ListDin tempat elemen akan ditambahkan.
+ *   - w: Elemen string berbasis Word yang akan ditambahkan.
+ */
+void InsertLast(ListDin *l, Word w);
+
+/**
+ * Menghapus elemen terakhir dari list.
+ * Initial State: List valid (teralokasi), tidak kosong.
+ * Final State: Elemen terakhir dihapus dari list, dan disimpan di `val`.
+ * Parameter:
+ *   - l: Pointer ke ListDin tempat elemen akan dihapus.
+ *   - val: Pointer ke ElType untuk menyimpan elemen yang dihapus.
+ */
 void DeleteLast(ListDin *l, ElType *val);
-/* IS: List tidak kosong */
-/* FS: Elemen terakhir dihapus dan disimpan di `val` */
 
-int Find(ListDin l, ElType val);
-/* IS: List teralokasi */
-/* FS: Mengembalikan indeks elemen pertama yang sama dengan `val` (case-sensitive),
-       atau -1 jika tidak ditemukan */
+/**
+ * Menghapus elemen pada indeks tertentu.
+ * Initial State: List valid (teralokasi), tidak kosong, indeks valid.
+ * Final State: Elemen pada indeks `idx` dihapus dari list, dan disimpan di `val`.
+ * Parameter:
+ *   - l: Pointer ke ListDin tempat elemen akan dihapus.
+ *   - idx: Indeks elemen yang akan dihapus.
+ *   - val: Pointer ke ElType untuk menyimpan elemen yang dihapus.
+ */
+void DeleteAt(ListDin *l, int idx, ElType *val);
+
+/* *** Operasi Tambahan *** */
+
+/**
+ * Mencari indeks elemen dalam list.
+ * Initial State: List valid (teralokasi).
+ * Final State: Tidak ada perubahan pada list.
+ * Parameter:
+ *   - l: ListDin yang diperiksa.
+ *   - w: Elemen string berbasis Word yang dicari.
+ * Return:
+ *   - Indeks elemen pertama yang sama dengan `w`, atau IDX_UNDEF jika tidak ditemukan.
+ */
+int indexOfDin(ListDin l, Word w);
+
+/**
+ * Mengurutkan elemen dalam list.
+ * Initial State: List valid (teralokasi), dapat kosong atau berisi elemen.
+ * Final State: Elemen dalam list terurut secara ascending atau descending.
+ * Parameter:
+ *   - l: Pointer ke ListDin yang akan diurutkan.
+ *   - ascending: true untuk ascending, false untuk descending.
+ */
+void sortDin(ListDin *l, boolean ascending);
+
+/**
+ * Mengompresi kapasitas list agar sesuai dengan jumlah elemen efektif.
+ * Initial State: List valid (teralokasi), kapasitas >= neff.
+ * Final State: Kapasitas list = neff, elemen tetap.
+ * Parameter:
+ *   - l: Pointer ke ListDin yang akan dikompresi.
+ */
+void compressListDin(ListDin *l);
 
 #endif

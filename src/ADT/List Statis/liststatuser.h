@@ -2,26 +2,23 @@
 #define LISTSTATUSER_H
 
 #include "../boolean.h"
-#include "../user.h" // Include definisi struct User
+#include "../User/user.h"
 
 /* Definisi ukuran maksimum list */
-#define CAPACITY 100
+#define MAX_USER 100
 #define IDX_UNDEF -1
 
-typedef struct User ElType; // Elemen list adalah struct User
-
 typedef struct {
-    ElType buffer[CAPACITY]; // Array untuk menyimpan elemen User
-    int neff;                // Jumlah elemen efektif
-} ListStatUser;
-
+    User users[MAX_USER]; 
+    int neff;
+} ListUser;
 /* *** Konstruktor *** */
 /**
  * Membuat list statis kosong.
  * IS: List belum terdefinisi.
  * FS: List terdefinisi dengan jumlah elemen efektif = 0.
  */
-void CreateListStatUser(ListStatUser *l);
+void CreateListStatUser(ListUser *l);
 
 /* *** Fungsi dan Validasi *** */
 /**
@@ -30,7 +27,7 @@ void CreateListStatUser(ListStatUser *l);
  * FS: Tidak ada perubahan pada list.
  * Return: true jika list kosong (neff = 0), false jika tidak.
  */
-boolean IsEmptyUser(ListStatUser l);
+boolean IsEmptyUser(ListUser l);
 
 /**
  * Mengecek apakah list penuh.
@@ -38,7 +35,7 @@ boolean IsEmptyUser(ListStatUser l);
  * FS: Tidak ada perubahan pada list.
  * Return: true jika list penuh (neff = CAPACITY), false jika tidak.
  */
-boolean IsFullUser(ListStatUser l);
+boolean IsFullUser(ListUser l);
 
 /* *** Operasi Dasar ListStatUser *** */
 /**
@@ -46,13 +43,13 @@ boolean IsFullUser(ListStatUser l);
  * IS: List valid, tidak penuh.
  * FS: Elemen baru ditambahkan di akhir list.
  */
-void InsertLastUser(ListStatUser *l, ElType val);
+void InsertLastUser(ListUser *l, User val);
 
 /**
  * Menghapus elemen terakhir dari list.
  * IS: List valid, tidak kosong.
  * FS: Elemen terakhir dihapus.
  */
-void DeleteLastUser(ListStatUser *l, ElType *val);
+void DeleteLastUser(ListUser *l, User *val);
 
 #endif

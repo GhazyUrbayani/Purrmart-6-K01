@@ -3,21 +3,19 @@
 // Digunakan untuk menyimpan data dengan kapasitas fleksibel, seperti daftar barang atau akun.
 
 #include <stdlib.h>
-#include "../mesinkata.h"
+#include "../Mesin Kata/mesinkata.h"
+#include "../Barang/barang.h"
 #include "../boolean.h"
 
 /*  Kamus Umum */
 #define IDX_MIN 0
 #define IDX_UNDEF -1
-#define NMax 150
-
-typedef char* ElType; // Elemen berupa string
 
 typedef struct {
-    ElType *buffer; // Array dinamis untuk menyimpan string
-    int capacity;   // Kapasitas maksimum list
-    int neff;       // Jumlah elemen efektif
-} ListDin;
+    Barang *barang;  // Pointer ke array dinamis untuk menyimpan barang
+    int capacity;    // Kapasitas maksimum list
+    int neff;        // Jumlah elemen efektif
+} ListBarang;
 
 /* *** Konstruktor dan Destruktor *** */
 
@@ -29,7 +27,7 @@ typedef struct {
  *   - l: Pointer ke ListDin yang akan dibuat.
  *   - capacity: Kapasitas awal list.
  */
-void CreateListDin(ListDin *l, int capacity);
+void CreateListDin(ListBarang *l, int capacity);
 
 /**
  * Menghapus ListDin dari memori.
@@ -38,7 +36,7 @@ void CreateListDin(ListDin *l, int capacity);
  * Parameter:
  *   - l: Pointer ke ListDin yang akan dihapus.
  */
-void DeallocateListDin(ListDin *l);
+void DeallocateListDin(ListBarang *l);
 
 /* *** Fungsi dan Validasi *** */
 
@@ -51,7 +49,7 @@ void DeallocateListDin(ListDin *l);
  * Return:
  *   - true jika list kosong (neff == 0), false jika tidak.
  */
-boolean IsEmpty(ListDin l);
+boolean IsEmpty(ListBarang l);
 
 /**
  * Mengecek apakah ListDin penuh.
@@ -62,7 +60,7 @@ boolean IsEmpty(ListDin l);
  * Return:
  *   - true jika list penuh (neff == capacity), false jika tidak.
  */
-boolean IsFull(ListDin l);
+boolean IsFull(ListBarang l);
 
 /**
  * Mengembalikan indeks pertama elemen dalam list.
@@ -73,7 +71,7 @@ boolean IsFull(ListDin l);
  * Return:
  *   - Indeks pertama elemen dalam list (IDX_MIN) jika tidak kosong, IDX_UNDEF jika kosong.
  */
-int GetFirstIdx(ListDin l);
+int GetFirstIdx(ListBarang l);
 
 /**
  * Mengembalikan indeks terakhir elemen dalam list.
@@ -84,7 +82,7 @@ int GetFirstIdx(ListDin l);
  * Return:
  *   - Indeks terakhir elemen dalam list jika tidak kosong, IDX_UNDEF jika kosong.
  */
-int GetLastIdx(ListDin l);
+int GetLastIdx(ListBarang l);
 
 /* *** Operasi Dasar ListDin *** */
 
@@ -96,7 +94,7 @@ int GetLastIdx(ListDin l);
  *   - l: Pointer ke ListDin tempat elemen akan ditambahkan.
  *   - w: Elemen string berbasis Word yang akan ditambahkan.
  */
-void InsertLast(ListDin *l, Word w);
+void InsertLast(ListBarang *l, Word w, int price);
 
 /**
  * Menghapus elemen terakhir dari list.
@@ -106,7 +104,7 @@ void InsertLast(ListDin *l, Word w);
  *   - l: Pointer ke ListDin tempat elemen akan dihapus.
  *   - val: Pointer ke ElType untuk menyimpan elemen yang dihapus.
  */
-void DeleteLast(ListDin *l, ElType *val);
+void DeleteLast(ListBarang *l, Barang *val);
 
 /**
  * Menghapus elemen pada indeks tertentu.
@@ -117,7 +115,7 @@ void DeleteLast(ListDin *l, ElType *val);
  *   - idx: Indeks elemen yang akan dihapus.
  *   - val: Pointer ke ElType untuk menyimpan elemen yang dihapus.
  */
-void DeleteAt(ListDin *l, int idx, ElType *val);
+void DeleteAt(ListBarang *l, int idx, Barang *val);
 
 /* *** Operasi Tambahan *** */
 
@@ -131,7 +129,7 @@ void DeleteAt(ListDin *l, int idx, ElType *val);
  * Return:
  *   - Indeks elemen pertama yang sama dengan `w`, atau IDX_UNDEF jika tidak ditemukan.
  */
-int indexOfDin(ListDin l, Word w);
+int indexOfDin(ListBarang l, Word w);
 
 /**
  * Mengurutkan elemen dalam list.
@@ -141,7 +139,7 @@ int indexOfDin(ListDin l, Word w);
  *   - l: Pointer ke ListDin yang akan diurutkan.
  *   - ascending: true untuk ascending, false untuk descending.
  */
-void sortDin(ListDin *l, boolean ascending);
+void sortDin(ListBarang *l, boolean ascending);
 
 /**
  * Mengompresi kapasitas list agar sesuai dengan jumlah elemen efektif.
@@ -150,6 +148,6 @@ void sortDin(ListDin *l, boolean ascending);
  * Parameter:
  *   - l: Pointer ke ListDin yang akan dikompresi.
  */
-void compressListDin(ListDin *l);
+void compressListDin(ListBarang *l);
 
 #endif

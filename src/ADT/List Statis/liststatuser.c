@@ -1,32 +1,32 @@
 #include "liststatuser.h"
 
 /* Membuat list statis kosong */
-void CreateListStatUser(ListStatUser *l) {
+void CreateListStatUser(ListUser *l) {
     l->neff = 0;
 }
 
 /* Mengecek apakah list kosong */
-boolean IsEmptyUser(ListStatUser l) {
+boolean IsEmptyUser(ListUser l) {
     return l.neff == 0;
 }
 
 /* Mengecek apakah list penuh */
-boolean IsFullUser(ListStatUser l) {
-    return l.neff == CAPACITY;
+boolean IsFullUser(ListUser l) {
+    return l.neff == MAX_USER;
 }
 
 /* Menambahkan elemen baru di akhir list */
-void InsertLastUser(ListStatUser *l, ElType val) {
+void InsertLastUser(ListUser *l, User val) {
     if (!IsFullUser(*l)) {
-        l->buffer[l->neff] = val;
+        l->users[l->neff] = val;
         l->neff++;
     }
 }
 
 /* Menghapus elemen terakhir dari list */
-void DeleteLastUser(ListStatUser *l, ElType *val) {
+void DeleteLastUser(ListUser *l, User *val) {
     if (!IsEmptyUser(*l)) {
-        *val = l->buffer[l->neff - 1];
+        *val = l->users[l->neff - 1];
         l->neff--;
     }
 }

@@ -1,0 +1,50 @@
+45
+5 Amazon EC2  
+20 AWS Lambda  
+0 Amazon ECS  
+23 Amazon S3  
+10 Amazon EBS  
+13 Amazon FSx  
+17 Amazon RDS  
+125 Amazon DynamoDB  
+25 Amazon Redshift  
+0 Amazon VPC  
+85 Amazon CloudFront  
+30 AWS Direct Connect  
+15 Amazon Kinesis  
+15 Amazon EMR  
+9 Amazon QuickSight  
+46 Amazon SageMaker  
+249 AWS DeepLens  
+1 Amazon Comprehend  
+0 AWS IAM  
+3000 AWS Shield  
+5 AWS WAF  
+1 AWS CodeCommit  
+5 AWS CodeBuild  
+0 AWS CodeDeploy  
+0 AWS CloudFormation  
+2 AWS CloudTrail  
+3 AWS Config  
+40 Amazon SQS  
+50 Amazon SNS  
+25 AWS Step Functions  
+1 AWS IoT Core  
+16 AWS IoT Greengrass  
+50 AWS IoT Analytics  
+0 AWS Migration Hub  
+200 AWS Snowball  
+125 AWS DataSync  
+75 AWS Elemental MediaConvert  
+12 AWS Elemental MediaLive  
+12 AWS Elemental MediaPackage  
+25 Amazon WorkSpaces  
+419 Amazon AppStream 2.0  
+5 Amazon WorkDocs  
+40 AWS RoboMaker  
+3000 AWS Ground Station  
+30 Amazon Braket
+3
+10 user password
+20 jeff bezos
+30 super pips

@@ -1,5 +1,5 @@
 #include "barang.h"
-#include "../mesinkata.h" // Include MesinKata untuk fungsi salinan string
+#include "./../Mesin Kata/mesinkata.h" 
 
 /* Membuat Barang baru */
 void CreateBarang(Barang *b, char name[], int price) {

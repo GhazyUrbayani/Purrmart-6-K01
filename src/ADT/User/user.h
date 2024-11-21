@@ -1,14 +1,14 @@
 #ifndef USER_H
 #define USER_H
 
-#include "../boolean.h"
-#include "../mesinkata.h" // Menggunakan fungsi salinan string dari MesinKata
+#include "./../boolean.h"
+#include "./../Mesin Kata/mesinkata.h" 
 
-#define MAX_LEN 100 // Panjang maksimum untuk nama dan password
+#define STRMAX_LEN 100 // Panjang maksimum untuk nama dan password
 
 typedef struct {
-    char name[MAX_LEN];      // Nama pengguna
-    char password[MAX_LEN];  // Password pengguna
+    char name[STRMAX_LEN];      // Nama pengguna
+    char password[STRMAX_LEN];  // Password pengguna
     int money;               // Jumlah uang pengguna
 } User;
 

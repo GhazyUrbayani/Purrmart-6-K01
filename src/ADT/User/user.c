@@ -1,5 +1,5 @@
 #include "user.h"
-#include "../mesinkata.h" // Include MesinKata untuk fungsi salinan string
+#include "./../Mesin Kata/mesinkata.h" 
 
 /* Membuat User baru */
 void CreateUser(User *u, char name[], char password[], int money) {

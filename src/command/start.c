@@ -1,7 +1,7 @@
-#include "../ADT/Mesin Karakter/mesinkarakter.h"
-#include "../ADT/Mesin Kata/mesinkata.h"
-#include "../ADT/ListDin/listdinstring.h"
-#include "../ADT/List Statis/liststatuser.h"
+#include "./../ADT/Mesin Karakter/mesinkarakter.h"
+#include "./../ADT/Mesin Kata/mesinkata.h"
+#include "./../ADT/ListDin/listdinstring.h"
+#include "./../ADT/List Statis/liststatuser.h"
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -1,8 +1,8 @@
 #ifndef BARANG_H
 #define BARANG_H
 
-#include "../boolean.h"
-#include "../mesinkata.h" // Menggunakan fungsi salinan string dari MesinKata
+#include "./../boolean.h"
+#include "./../Mesin Kata/mesinkata.h" 
 
 #define MAX_LEN 50 // Panjang maksimum untuk nama barang
 

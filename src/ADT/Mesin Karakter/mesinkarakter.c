@@ -14,6 +14,7 @@ void START(const char *filename) {
     pita = fopen(filename, "r");
     if (pita == NULL) {
         EOP = true;
+        printf("Error: File %s tidak ditemukan atau tidak bisa dibuka.\n", filename);
         return;
     }
     ADV();

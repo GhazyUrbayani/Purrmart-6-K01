@@ -1,13 +1,13 @@
 #ifndef MESIN_KATA_H
 #define MESIN_KATA_H
 
-#include "../mesinkarakter.h"
+#include "../Mesin Karakter/mesinkarakter.h"
 
 /* Definisi word */
-#define NMax 100
+#define MESINKATA_NMax 100
 
 typedef struct {
-    char TabWord[NMax];
+    char TabWord[MESINKATA_NMax];
     int Length;
 } Word;
 
@@ -25,6 +25,7 @@ void ADVSENTENCENL();                  // Membaca kalimat hingga newline
 boolean WordEqual(Word w);             // Mengecek kesamaan kata
 int WordToInt(Word w);                 // Mengonversi kata menjadi integer
 void printWord(Word w);                // Menampilkan kata ke output
-Word stringToWord(const char *str);    // Mengubah string menjadi Word
+Word stringToWord(const char *str);
+void CopyString(char *new, const char str) ;   // Mengubah string menjadi Word
 
 #endif

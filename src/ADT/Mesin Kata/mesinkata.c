@@ -1,6 +1,8 @@
 #include "mesinkata.h"
 #include <stdio.h>
 
+#define STRING(w) w.TabWord
+
 /* State Mesin Kata */
 Word currentWord;
 boolean EndWord;
@@ -8,7 +10,11 @@ boolean EndWord;
 /* Memulai mesin kata */
 void STARTWORD(const char *filename) {
     START(filename);
-    ADVWORD();
+ if (!EOP) {
+        ADVWORD();
+    } else {
+        printf("Error: File kosong atau tidak bisa dibaca.\n");
+    }
 }
 
 /* Memulai mesin kata dari input stdin */
@@ -28,7 +34,7 @@ void ADVWORD() {
         EndWord = true;
     } else {
         EndWord = false;
-        while (!IsBlank() && !EOP && i < NMax) {
+        while (!IsBlank() && !EOP && i < MESINKATA_NMax) {
             currentWord.TabWord[i] = currentChar;
             i++;
             ADV();
@@ -41,7 +47,7 @@ void ADVWORD() {
 /* Membaca kalimat hingga newline */
 void ADVSENTENCENL() {
     int i = 0;
-    while (!EOP && currentChar != NEWLINE && i < NMax) {
+    while (!EOP && currentChar != NEWLINE && i < MESINKATA_NMax) {
         currentWord.TabWord[i] = currentChar;
         i++;
         ADV();
@@ -87,10 +93,20 @@ void printWord(Word w) {
 Word stringToWord(const char *str) {
     Word w;
     int i = 0;
-    while (str[i] != '\0' && i < NMax) {
+    while (str[i] != '\0' && i < MESINKATA_NMax) {
         w.TabWord[i] = str[i];
         i++;
     }
+    w.TabWord[i] = '\0';
     w.Length = i;
     return w;
+}
+
+void CopyString(char *new, const char *str) {
+    int i = 0;
+    while (str[i] != '\0') {
+        new[i] = str[i];
+        i++;
+    }
+    new[i] = '\0';
 }

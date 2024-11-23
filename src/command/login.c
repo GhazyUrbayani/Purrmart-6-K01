@@ -70,9 +70,11 @@ void loginAccount(ListStatUser userList, Word *currentUsername) {
         return;
     }
 
+    boolean statuslog = false;
     if (isLoginValid(userList, username, password)) {
         *currentUsername = username; 
         displayLoginSuccess(username);
+        boolean statuslog = true;
     } else {
         displayLoginFailed();
     }

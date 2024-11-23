@@ -31,7 +31,11 @@ void* alokasi_salin(const void *item, size_t itemSize) {
 
 boolean str_compare(char s1[],char s2[]) {
     if (str_len(s1) != str_len(s2)) return false;
-    while (*s1 != '\0') if (*s1++ != *s2++) return false;
+    while (*s1 != '\0') {
+        if (*s1++ != *s2++) {
+            return false;
+        }
+    }
     return true;
 }
 

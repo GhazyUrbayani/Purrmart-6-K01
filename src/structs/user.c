@@ -70,11 +70,12 @@ void us_WriteUsers(SList *users, FILE *file) {
 boolean us_isUserin(SList *userList, User *user) {
     int size = userList->size;
     for (int i = 0; i < size; i++) {
-        if (str_compare(user->name,us_getItem(userList,i)->name)) {
-            us_addItem(userList,user);
-            break;
+        User *out = us_getItem(userList,i);
+        if (str_compare(user->name,out->name)) {
+            return true;
         }
     }
+    return false;
 }
 
 size_t us_search(SList *userList, User *user) {

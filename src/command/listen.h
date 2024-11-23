@@ -6,6 +6,7 @@
 #include "startnload.h"
 #include "save.h"
 #include "register.h"
+#include "./../store/store.h"
 #include "./../ADT/mesinkata/mesinkata.h"
 
 void listen(void);

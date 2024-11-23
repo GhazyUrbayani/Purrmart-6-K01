@@ -43,7 +43,7 @@ void DeleteItem(Item *b);
  */
 
 void is_initList(SList *list);
-void is_addItem(SList *list, void *item);
+void is_addItem(SList *list, Item *item);
 void is_insertItem(SList *list, size_t index, Item *item);
 void is_removeItem(SList *list, size_t index);
 Item* is_getItem(SList *list, size_t index);
@@ -55,7 +55,7 @@ void is_clearList(SList *list);
  */
 
 DList* id_createList();
-void id_addItem(DList *list, void *item);
+void id_addItem(DList *list, Item *item);
 void id_insertItem(DList *list, size_t index, Item *item);
 void id_removeItem(DList *list, size_t index);
 Item* id_getItem(DList *list, size_t index);
@@ -75,7 +75,7 @@ int iisQueueEmpty(Queue *queue);
 int iisQueueFull(Queue *queue);
 void ienqueue(Queue *queue, Item *item);
 Item* idequeue(Queue *queue);
-void* ipeekQueue(Queue *queue);
+Item* ipeekQueue(Queue *queue);
 void iclearQueue(Queue *queue);
 
 #endif

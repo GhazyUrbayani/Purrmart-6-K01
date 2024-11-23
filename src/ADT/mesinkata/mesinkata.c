@@ -23,6 +23,23 @@ void STARTWORDINPUT(void) {
     ADVWORD();
 }
 
+void STARTSENTENCEINPUT(void) {
+    STARTINPUT();
+
+    int i = 0;
+
+    while (!EOP && currentChar != '\n' && i < MESINKATA_NMax) {
+        currentWord.TabWord[i] = currentChar;
+        i++;
+        ADV();
+    }
+
+    currentWord.Length = i;
+    currentWord.TabWord[i] = '\0';
+
+    EndWord = (i == 0);
+}
+
 // Melewati karakter kosong (spasi atau newline) hingga menemukan karakter pertama yang bukan kosong.
 void IgnoreBlank(void) {
     while (IsBlank() && !EOP) {

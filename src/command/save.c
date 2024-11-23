@@ -2,7 +2,7 @@
 #include "./../ADT/utils.h"
 
 void SAVE(SList *users, DList *items, char *filename) {
-    char *dest = str_concat("./../../save/",filename);
+    char *dest = str_concat("./save/",filename);
     FILE *file = fopen(dest, "w");
     if (file == NULL) {
         printf("Error: Could not open file %s for writing.\n", filename);

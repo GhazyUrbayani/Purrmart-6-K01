@@ -30,6 +30,8 @@ void ADVWORD(void);
 // Membaca kalimat hingga menemukan karakter newline.
 void ADVSENTENCENL(void);
 
+void STARTSENTENCEINPUT(void);
+
 // Melewati karakter kosong (spasi atau newline)
 void IgnoreBlank(void);
 

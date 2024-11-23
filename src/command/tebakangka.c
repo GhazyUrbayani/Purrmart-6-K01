@@ -9,7 +9,7 @@ void tebakangka(User *users) {
     printf("Halo, selamat datang di permainan tebak angka!\n");
     printf("Silakan tebak angka dari 1-100\n");
     while (nyawa > 0) {
-        int hadiah = 400 - (400-220)/(10-nyawa);
+        int hadiah = 200 + 20*nyawa;
         printf("Masukkan tebakan: ");
         scanf("%d", &tebakan);
         if (tebakan == angka) {

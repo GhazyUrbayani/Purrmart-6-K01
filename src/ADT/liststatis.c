@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "liststatis.h"
 #include "utils.h"
+#include "boolean.h"
 
 void s_initList(SList *list) {
     list->size = 0;

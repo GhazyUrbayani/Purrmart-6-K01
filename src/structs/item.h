@@ -44,10 +44,10 @@ void DeleteItem(Item *b);
 
 void is_initList(SList *list);
 void is_addItem(SList *list, void *item);
-void is_insertItem(SList *list, size_t index, void *item);
+void is_insertItem(SList *list, size_t index, Item *item);
 void is_removeItem(SList *list, size_t index);
-void* is_getItem(SList *list, size_t index);
-void is_setItem(SList *list, size_t index, void *item);
+Item* is_getItem(SList *list, size_t index);
+void is_setItem(SList *list, size_t index, Item *item);
 void is_clearList(SList *list);
 
 /* 
@@ -56,10 +56,10 @@ void is_clearList(SList *list);
 
 DList* id_createList();
 void id_addItem(DList *list, void *item);
-void id_insertItem(DList *list, size_t index, void *item);
+void id_insertItem(DList *list, size_t index, Item *item);
 void id_removeItem(DList *list, size_t index);
-void* id_getItem(DList *list, size_t index);
-void id_setItem(DList *list, size_t index, void *item);
+Item* id_getItem(DList *list, size_t index);
+void id_setItem(DList *list, size_t index, Item *item);
 void id_clearList(DList *list);
 void id_freeList(DList *list);
 
@@ -73,8 +73,8 @@ void WriteItems(DList *items, FILE *file);
 void iinitQueue(Queue *queue);
 int iisQueueEmpty(Queue *queue);
 int iisQueueFull(Queue *queue);
-void ienqueue(Queue *queue, void *item);
-void* idequeue(Queue *queue);
+void ienqueue(Queue *queue, Item *item);
+Item* idequeue(Queue *queue);
 void* ipeekQueue(Queue *queue);
 void iclearQueue(Queue *queue);
 

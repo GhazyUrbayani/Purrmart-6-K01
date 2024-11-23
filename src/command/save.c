@@ -1,7 +1,9 @@
 #include "save.h"
+#include "./../ADT/utils.h"
 
 void SAVE(SList *users, DList *items, char *filename) {
-    FILE *file = fopen(filename, "w");
+    char *dest = str_concat("./../../save/",filename);
+    FILE *file = fopen(dest, "w");
     if (file == NULL) {
         printf("Error: Could not open file %s for writing.\n", filename);
         return;
@@ -11,7 +13,7 @@ void SAVE(SList *users, DList *items, char *filename) {
     WriteItems(items, file);
 
     // Write users to file
-    WriteUsers(users, file);
+    us_WriteUsers(users, file);
 
     fclose(file); // Close the file
     printf("Data successfully written to %s.\n", filename);

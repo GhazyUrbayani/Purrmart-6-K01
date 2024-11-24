@@ -39,3 +39,7 @@ boolean str_compare(char s1[],char s2[]);
 /// @param s2 akhir
 /// @return pointer ke string
 char *str_concat(char *s1, char *s2);
+
+/// @brief Men-delay program
+/// @param seconds detik
+void delay(double seconds);

@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "listen.h": "c"
+        "*.c": "c",
+        "listen.h": "c",
+        "utils.h": "c"
     }
 }

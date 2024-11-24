@@ -1,6 +1,9 @@
 #include <stdlib.h>
-#include "utils.h"
 #include <stdio.h>
+#include <time.h>
+#include <math.h>
+#include "utils.h"
+
 
 void *mem_salin(void *dest, const void *src, size_t n) {
     char *d = (char *)dest;
@@ -57,3 +60,13 @@ char *str_concat(char *s1, char *s2) {
 
     return s3;
 } 
+
+
+void delay(double seconds) {
+    clock_t start_time = clock(); // Get the current clock time
+    double end_time = seconds * CLOCKS_PER_SEC;
+
+    while ((clock() - start_time) < end_time) {
+        // Busy-wait loop to simulate delay
+    }
+}

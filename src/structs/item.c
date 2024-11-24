@@ -29,24 +29,24 @@ void DeleteItem(Item *b) {
 }
 
 /* 
-    List Statis User
+    List Statis Item
  */
 void is_initList(SList *list) {
     s_initList(list);
 }
-void is_addItem(SList *list, void *item) {
+void is_addItem(SList *list, Item *item) {
     s_addItem(list, item, sizeof(Item));
 }
-void is_insertItem(SList *list, size_t index, void *item) {
+void is_insertItem(SList *list, size_t index, Item *item) {
     s_insertItem(list,index,item,sizeof(Item));
 }
 void is_removeItem(SList *list, size_t index) {
     s_removeItem(list,index);
 }
-void* is_getItem(SList *list, size_t index) {
+Item* is_getItem(SList *list, size_t index) {
     return s_getItem(list,index);
 }
-void is_setItem(SList *list, size_t index, void *item) {
+void is_setItem(SList *list, size_t index, Item *item) {
     s_setItem(list,index,item,sizeof(Item));
 }
 void is_clearList(SList *list) {
@@ -54,24 +54,24 @@ void is_clearList(SList *list) {
 }
 
 /* 
-    List Dinamis User
+    List Dinamis Item
  */
 DList* id_createList() {
     return d_createList();
 }
-void id_addItem(DList *list, void *item) {
+void id_addItem(DList *list, Item *item) {
     d_addItem(list,item,sizeof(Item));
 }
-void id_insertItem(DList *list, size_t index, void *item) {
+void id_insertItem(DList *list, size_t index, Item *item) {
     d_insertItem(list,index,item,sizeof(Item));
 }
 void id_removeItem(DList *list, size_t index) {
     d_removeItem(list,index);
 }
-void* id_getItem(DList *list, size_t index) {
+Item* id_getItem(DList *list, size_t index) {
     d_getItem(list,index);
 }
-void id_setItem(DList *list, size_t index, void *item) {
+void id_setItem(DList *list, size_t index, Item *item) {
     d_setItem(list,index,item,sizeof(Item));
 }
 void id_clearList(DList *list) {
@@ -99,7 +99,7 @@ void WriteItems(DList *items, FILE *file) {
 }
 
 /* 
-    Queue User
+    Queue Item
  */
 
 void iinitQueue(Queue *queue) {
@@ -111,13 +111,13 @@ int iisQueueEmpty(Queue *queue) {
 int iisQueueFull(Queue *queue) {
     return isQueueFull(queue);
 }
-void ienqueue(Queue *queue, void *item) {
+void ienqueue(Queue *queue, Item *item) {
     enqueue(queue,item,sizeof(Item));
 }
-void* idequeue(Queue *queue) {
+Item* idequeue(Queue *queue) {
     dequeue(queue);
 }
-void* ipeekQueue(Queue *queue) {
+Item* ipeekQueue(Queue *queue) {
     peekQueue(queue);
 }
 void iclearQueue(Queue *queue) {

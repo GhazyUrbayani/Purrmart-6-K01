@@ -8,6 +8,6 @@
 #include "./../ADT/utils.h"
 
 //Command START, read file default(config) dan memasukkan nilainya ke variable
-void STARTPROGRAM(SList *users, DList **items, char *filename);
+int STARTPROGRAM(SList *users, DList **items, char *filename);
 
 #endif

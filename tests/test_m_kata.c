@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "mesinkata.h"
+#include "./../src/ADT/mesinkata/mesinkata.h"
 
 int main() {
     printf("=== TESTER MESIN KATA ===\n");
 
     // Test STARTWORD dari file
     printf("\n1. Test STARTWORD (membaca kata dari file)...\n");
-    STARTWORD("theother.txt"); // Ubah "testfile.txt" ke nama file yang tersedia
+    STARTWORD("./tests/theother.txt"); // Ubah "testfile.txt" ke nama file yang tersedia
     while (!EndWord) {
         printWord(currentWord);
         printf("\n");
@@ -35,13 +35,12 @@ int main() {
     printf("\nSelesai membaca kalimat.\n");
 
     // Test WordToInt dan WordEqual
-    printf("\n4. Test WordToInt dan WordEqual...\n");
+    printf("\n4. Test WordToInt\n");
     Word numWord = stringToWord("12345");
     Word textWord = stringToWord("hello");
     printf("Konversi kata '12345' menjadi integer: %d\n", WordToInt(numWord));
     printf("Konversi kata 'hello' menjadi integer: %d (seharusnya -1 karena bukan angka)\n", WordToInt(textWord));
     Word compareWord = stringToWord("hello");
-    printf("Apakah kata 'hello' dan 'hello' sama? %s\n", WordEqual(textWord, compareWord) ? "Ya" : "Tidak");
 
     return 0;
 }

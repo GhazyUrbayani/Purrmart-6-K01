@@ -5,7 +5,6 @@
 /* State Mesin Karakter */
 char currentChar;      // Karakter yang sedang diproses
 boolean EOP = false;   // Status apakah sudah mencapai akhir file
-
 static FILE *pita = NULL;  // Pointer ke file yang sedang dibaca
 static int retval = 0;     // Status hasil pembacaan karakter
 

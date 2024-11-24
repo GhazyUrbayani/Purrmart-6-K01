@@ -1,7 +1,8 @@
 #include "startnload.h"
 
-void STARTPROGRAM(SList *users, DList **items, char *filename) {
-    STARTWORD(filename);
+int STARTPROGRAM(SList *users, DList **items, char *filename) {
+    char *dest = str_concat("./save/",filename);
+    int result = STARTWORD(dest);
     // Menginput item
     int num_of_items = WordToInt(currentWord);
     *items = id_createList();
@@ -13,6 +14,7 @@ void STARTPROGRAM(SList *users, DList **items, char *filename) {
     int num_of_users = WordToInt(currentWord);
     us_initList(users);
     for (int i = 0; i < num_of_users; i++) {
-        ReadUser(users);
+        us_ReadUser(users);
     }
+    return result;
 }

@@ -1,12 +1,15 @@
-#ifndef logout_H
-#define logout_H
+#ifndef LOGOUT_H
+#define LOGOUT_H
 
-#include "boolean.h"
-#include "liststatususer.h"
-#include "user.h"
-#include "mesinkata.h"
+#include "./../structs/user.h"
 
-// User melakukan logout
-void logout(User* user);
+/// @brief Mengecek apakah User di state program memiliki isi
+/// @param user variabel user yang ada di state program
+/// @return true jika user memiliki isi
+boolean isLoggedIn(User *user);
 
-#endif
+/// @brief Me-logout user dengan cara mengosongkannya
+/// @param user variabel user yang ada di state program
+void logout(User *user);
+
+#endif // LOGOUT_H

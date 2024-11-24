@@ -6,6 +6,7 @@
 #include "./../ADT/liststatis.h"
 #include "./../ADT/listdinamis.h"
 #include "./../ADT/queue.h"
+#include "./../ADT/utils.h"
 
 #include <stdio.h>
 
@@ -49,26 +50,34 @@ void DeleteUser(User *u);
  */
 
 void us_initList(SList *user_list);
-void us_addItem(SList *user_list, void *user);
-void us_insertItem(SList *user_list, size_t index, void *user);
+void us_addItem(SList *user_list, User *user);
+void us_insertItem(SList *user_list, size_t index, User *user);
 void us_removeItem(SList *user_list, size_t index);
-void* us_getItem(SList *user_list, size_t index);
-void us_setItem(SList *user_list, size_t index, void *user);
+User* us_getItem(SList *user_list, size_t index);
+void us_setItem(SList *user_list, size_t index, User *user);
 void us_clearList(SList *user_list);
 
-void ReadUser(SList *user_list);
-void WriteUsers(SList *user_list, FILE *file);
+void us_ReadUser(SList *user_list);
+void us_WriteUsers(SList *user_list, FILE *file);
+
+/// @brief Cek apakah user ada dalam sebuah list
+/// @param userList 
+/// @param user 
+/// @return mengembalikan value apakah ada atau tidaknya user dalam sebuah list of user
+boolean us_isUserin(SList *userList, User *user);
+
+size_t us_search(SList *userList, User *user);
 
 /* 
     List Dinamis User
  */
 
 DList* ud_createList();
-void ud_addItem(DList *list, void *item);
-void ud_insertItem(DList *list, size_t index, void *item);
+void ud_addItem(DList *list, User *item);
+void ud_insertItem(DList *list, size_t index, User *item);
 void ud_removeItem(DList *list, size_t index);
-void* ud_getItem(DList *list, size_t index);
-void ud_setItem(DList *list, size_t index, void *item);
+User* ud_getItem(DList *list, size_t index);
+void ud_setItem(DList *list, size_t index, User *item);
 void ud_clearList(DList *list);
 void ud_freeList(DList *list);
 
@@ -77,11 +86,11 @@ void ud_freeList(DList *list);
  */
 
 void uinitQueue(Queue *queue);
-int uisQueueEmpty(Queue *queue);
-int uisQueueFull(Queue *queue);
-void uenqueue(Queue *queue, void *item);
-void* udequeue(Queue *queue);
-void* upeekQueue(Queue *queue);
+boolean uisQueueEmpty(Queue *queue);
+boolean uisQueueFull(Queue *queue);
+void uenqueue(Queue *queue, User *User);
+User* udequeue(Queue *queue);
+User* upeekQueue(Queue *queue);
 void uclearQueue(Queue *queue);
 
 #endif

@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.c": "c",
+        "listen.h": "c",
+        "utils.h": "c",
+        "store.h": "c",
+        "wordle.h": "c"
+    }
+}

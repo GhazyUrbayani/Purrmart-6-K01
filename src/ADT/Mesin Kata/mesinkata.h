@@ -29,3 +29,4 @@ Word stringToWord(const char *str);
 void CopyString(char *new, const char *str) ;   // Mengubah string menjadi Word
 
 #endif
+

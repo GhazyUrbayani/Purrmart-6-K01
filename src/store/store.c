@@ -39,9 +39,9 @@ void store_supply(Queue *item_queue, DList *item_list) {
     }
     Item *peeked = ipeekQueue(item_queue);
     char *item_name = peeked->name;
-    printf("Apakah kamu ingin menambahkan barang %s", item_name);
+    printf("Apakah kamu ingin menambahkan barang %s?: ", item_name);
     STARTWORDINPUT();
-    if (str_compare(STRING(currentWord),"Terima")) {
+    if (str_compare(STRING(currentWord),"TERIMA")) {
         printf("Harga barang: ");
         STARTWORDINPUT();
         int harga = WordToInt(currentWord);
@@ -49,11 +49,11 @@ void store_supply(Queue *item_queue, DList *item_list) {
         id_addItem(item_list,peeked);
         dequeue(item_queue);
         printf("%s dengan harga %d telah ditambahkan ke toko.\n",item_name,harga);
-    } else if (str_compare(STRING(currentWord),"Tunda")) {
+    } else if (str_compare(STRING(currentWord),"TUNDA")) {
         Item *dequeued = idequeue(item_queue);
         ienqueue(item_queue,dequeued);
         printf("%s dikembalikan ke antrian.\n",item_name);
-    } else if (str_compare(STRING(currentWord),"Tolak")) {
+    } else if (str_compare(STRING(currentWord),"TOLAK")) {
         printf("%s dihapus dari antrian.\n",item_name);
     }
 }

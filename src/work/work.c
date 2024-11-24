@@ -23,7 +23,6 @@ void simple_work(User *logged_user) {
     int idxkerja = -1;
     for (int i = 0; i < kerjaan.size; i++) {
         Kerja *current = (Kerja *) s_getItem(&kerjaan,i);
-        printf("%s %s\n", STRING(currentWord),current->nama);
         if (str_compare(STRING(currentWord),current->nama)) {
             idxkerja = i;
             break;

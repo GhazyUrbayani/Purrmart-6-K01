@@ -20,7 +20,7 @@ void LoadWords(WordList *wordList);
 
 Word SelectWord(WordList *wordList);
 
-boolean IsInWordList(WordList *wordList);
+boolean IsInWordList(WordList *wordList,Word word);
 
 Word GetValidInput(WordList *wordList);
 

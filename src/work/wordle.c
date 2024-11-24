@@ -8,7 +8,7 @@
 
 void LoadWords(WordList *wordList){
     wordList->wordCount = 0;
-    const char *filename = "./ADT/data/vocab.txt";
+    const char *filename = "./data/vocab.txt";
     STARTWORD(filename);
     while(!EndWord&&(*wordList).wordCount<MAX_WORDS){
         (*wordList).words[(*wordList).wordCount] = currentWord;

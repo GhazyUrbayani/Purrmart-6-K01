@@ -6,9 +6,11 @@
 #include "startnload.h"
 #include "save.h"
 #include "register.h"
+#include "help.h"
 #include "./../store/store.h"
 #include "./../work/work.h"
 #include "./../work/tebakangka.h"
+#include "./../work/wordle.h"
 #include "./../ADT/mesinkata/mesinkata.h"
 
 void listen(void);

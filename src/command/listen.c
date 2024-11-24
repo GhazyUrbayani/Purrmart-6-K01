@@ -65,10 +65,15 @@ void listen(void) {
 
             login(&user_list, &logged_user, STRING(username), STRING(password));
 
+        // ** HELP Command ** //
+        } else if (str_compare(STRING(currentWord), "HELP")) {
+            help(started,isLoggedIn(&logged_user));
+            
         // ** LOGOUT Command ** //
         } else if (started && str_compare(STRING(currentWord), "LOGOUT")) {
             logout(&logged_user);
 
+        // ** SAVE Command ** //
         } else if (started && str_compare(STRING(currentWord), "SAVE")) {
             printf("Masukkan nama file: ");
             ADVWORD();
@@ -125,7 +130,7 @@ void listen(void) {
                 logged_user.money -= 200;
                 logged_user.money += tebakangka();
             } else if (nomor == 2 && logged_user.money >= 500) {
-                printf("Placeholder Wordle\n");
+                Wordle(&logged_user);
             } else {
                 printf("Permainan tidak diketahui atau uang tidak cukup.\n");
             }

@@ -26,6 +26,6 @@ boolean WordEqual(Word w);             // Mengecek kesamaan kata
 int WordToInt(Word w);                 // Mengonversi kata menjadi integer
 void printWord(Word w);                // Menampilkan kata ke output
 Word stringToWord(const char *str);
-void CopyString(char *new, const char str) ;   // Mengubah string menjadi Word
+void CopyString(char *new, const char *str) ;   // Mengubah string menjadi Word
 
 #endif

@@ -1,6 +1,6 @@
-#include "tebakAngka.h"
+#include "tebakangka.h"
 
-int tebakAngka() {
+int tebakangka() {
     int targetNumber;
     int attempts = 10; 
     int guess;
@@ -45,9 +45,3 @@ int tebakAngka() {
         }
     }
 } 
- 
-int main() {
-    int hasil = tebakAngka();
-    printf("Skor akhir: %d\n", hasil);
-    return 0;
-}

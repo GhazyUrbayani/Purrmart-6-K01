@@ -38,6 +38,8 @@ void simple_work(User *logged_user) {
     } else {
         printf("Pekerjaan tidak ditemukan.\n");
     }
+
+    s_clearList(&kerjaan);
 }
 
 void buatkerja(Kerja *kerja, char *nama, double durasi, int gaji) {

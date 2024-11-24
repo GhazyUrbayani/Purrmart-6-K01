@@ -4,7 +4,7 @@ boolean isLoggedIn(User *user) {
     return (!str_compare(user->name,""));
 }
 
-void logout(User *user, SList *userlist) {
+void logout(User *user) {
     if (isLoggedIn(user)) {
         CopyString(user->name,"");
         CopyString(user->password,"");

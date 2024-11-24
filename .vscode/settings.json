@@ -4,6 +4,7 @@
         "listen.h": "c",
         "utils.h": "c",
         "store.h": "c",
-        "wordle.h": "c"
+        "wordle.h": "c",
+        "liststatis.h": "c"
     }
 }

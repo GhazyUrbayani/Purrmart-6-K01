@@ -31,6 +31,7 @@ void listen(void) {
 
         // ** LOAD Command ** //
         } else if (str_compare(STRING(currentWord), "LOAD")) {
+            printf("Masukkan nama file: ");
             ADVWORD();
             char *filename = str_concat(STRING(currentWord), "");
             int result = STARTPROGRAM(&user_list, &item_list, filename);
@@ -153,4 +154,16 @@ void listen(void) {
         printf("Masukkan command: ");
         STARTSENTENCEINPUT();
     }
+    // Di luar while
+    if (started) {
+        printf("Apakah kamu ingin menyimpan dahulu?\n(y jika ya) >>> ");
+        STARTWORDINPUT();
+        if (str_compare(STRING(currentWord),"y")) {
+            printf("Masukkan nama file: ");
+            ADVWORD();
+            char *filename = STRING(currentWord);
+            SAVE(&user_list, item_list, filename);
+        }
+    }
+    printf("Goodbye!\n");
 }

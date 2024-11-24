@@ -20,13 +20,13 @@ void LoadWords(WordList *wordList){
     }
 }
 
-Word SelectWord(WordList *wordList){
+Word SelectWord(WordList *wordList){ 
     srand(time(NULL));
-    int idx = rand() % (*wordList).wordCount;
-    return (*wordList).words[idx];
+    int idx = rand() % (*wordList).wordCount; // randomize the index
+    return (*wordList).words[idx]; // get the randomize word
 }
 
-boolean IsInWordList(WordList *wordList, Word word){
+boolean IsInWordList(WordList *wordList, Word word){ // check if the word is in the wordlist
     for (int i = 0; i < (*wordList).wordCount; i++) {
         currentWord = (*wordList).words[i];
         if (WordEqual(word)) {
@@ -35,7 +35,7 @@ boolean IsInWordList(WordList *wordList, Word word){
     }
     return false;
 }
-Word GetValidInput(WordList *wordList){
+Word GetValidInput(WordList *wordList){ // get the valid input, will not decrease the attempt 
     Word input;
     boolean valid = false;
     while (!valid) {
@@ -51,43 +51,36 @@ Word GetValidInput(WordList *wordList){
     return input;
 }
 
-char *checkGuess(Word word, Word tebakan, char hint[]){
-    boolean used[5] = {false}; // Menandai huruf yang sudah digunakan
-
-    // Awalnya, isi hint dengan tebakan dan tanda untuk huruf salah
-    for (int i = 0; i < 5; i++) {
-        hint[i * 3] = tebakan.TabWord[i]; // Huruf dari tebakan
-        hint[i * 3 + 1] = '%';           // Default: tanda untuk huruf salah
-        hint[i * 3 + 2] = ' ';           // Spasi setelah tanda
+char *checkGuess(Word word, Word tebakan, char history[]){
+    boolean used[5] = {false};  // initialze that every character in the word has not been used
+    for (int i = 0; i < 5; i++) { // initialize every input character is wrong
+        history[i * 3] = tebakan.TabWord[i]; 
+        history[i * 3 + 1] = '%';           
+        history[i * 3 + 2] = ' ';           
     }
-
-    // Tandai huruf yang benar dan di posisi yang benar
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 5; i++) { // check if the character is in the true position
         if (tebakan.TabWord[i] == word.TabWord[i]) {
-            hint[i * 3 + 1] = ' '; // Tidak diberi tanda
-            used[i] = true;        // Tandai huruf ini sudah benar
+            history[i * 3 + 1] = ' '; 
+            used[i] = true;    // the character is set as used   
         }
     }
-
-    // Tandai huruf yang benar tetapi di posisi yang salah
     for (int i = 0; i < 5; i++) {
-        if (hint[i * 3 + 1] == '%') { // Hanya periksa huruf yang belum benar
+        if (history[i * 3 + 1] == '%') { //only check the wrong character to search is there any right character in the wrong position
             for (int j = 0; j < 5; j++) {
                 if (!used[j] && tebakan.TabWord[i] == word.TabWord[j]) {
-                    hint[i * 3 + 1] = '*'; // Tandai posisi salah
-                    used[j] = true;       // Tandai huruf ini sudah digunakan
-                    break;
+                    history[i * 3 + 1] = '*'; 
+                    history[j] = true;       // the character is set as used   
                 }
             }
         }
     }
 
-    hint[15] = '\0';
-    return hint;
+    history[15] = '\0'; // set the null terminator
+    return history;
 }
 
-void printHistory(char history[][16], int attempts) {
-    for (int i = 0; i < attempts; i++) {
+void printHistory(char history[][16], int percobaan) {
+    for (int i = 0; i < percobaan; i++) { //print the previous also the current guess with their feedback
         for (int j = 0; j < 15; j++) {
             printf("%c", history[i][j]);
         }
@@ -95,26 +88,17 @@ void printHistory(char history[][16], int attempts) {
     }
 }
 
-void underscore(int n){
-    for (int i = 0; i < n; i++) { 
-        for (int j = 0; j < 5; j++) { 
-            printf("_ ");
-        }
-        printf("\n"); // Pindah ke baris berikutnya
-    }
-}
-
 void Wordle (User *users){
-    (*users).money -= 500;
+    (*users).money -= 500; // biaya awal
     WordList wordList;
     LoadWords(&wordList);
-    Word word = SelectWord(&wordList);
+    Word word = SelectWord(&wordList); // get the random word
     int hadiah = 10000;
     int nyawa = 6;
-    char history[6][16]; // Setiap feedback maksimal 15 karakter + null-terminator
+    char history[6][16]; // store the hint from checkguess feedback
     int percobaan = 0;
     printf("WELCOME TO W0RDL3, YOU HAVE 6 CHANCES TO ANSWER BEFORE YOU LOSE\n");
-    underscore(nyawa);
+    printf("_ _ _ _ _\n _ _ _ _ _\n _ _ _ _ _\n _ _ _ _ _\n _ _ _ _ _\n _ _ _ _ _\n");
     while (nyawa > 0) {
         currentWord = GetValidInput(&wordList);
         checkGuess(word,  currentWord , history[percobaan]);
@@ -123,7 +107,7 @@ void Wordle (User *users){
             (*users).money += hadiah;
             printf("\n");
             printf("YEYYY!!! KAMU BERHASIL MENEBAK KATA YANG BENAR\n");
-            printf("KAMU MENDAPATKAN %d KOIN.\n", hadiah);
+            printf("KAMU MENDAPATKAN %d RUPIAH.\n", hadiah);
             return;
         } else {
             nyawa--;

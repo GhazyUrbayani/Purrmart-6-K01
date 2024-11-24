@@ -16,17 +16,30 @@ typedef struct {
  * IS: Wordlist belum terisi.
  * FS: WordList terisi dengan kata-kata dari vocab.txt.
  */
-void LoadWords(WordList *wordList);
+void LoadWords(WordList *wordList); 
 
+/// @brief mengambil kata random
+/// @param wordList array kumpulan kata
+/// @return kata random
 Word SelectWord(WordList *wordList);
 
+/// @brief cek apakah kata ada di array kumpulan kata
+/// @param wordList array kumpulan kata
+/// @param word kata yang ingin di cek
+/// @return 
 boolean IsInWordList(WordList *wordList,Word word);
 
+/// @brief melakukan looping sampai kata yang diinput benar (berada di wordlist)
+/// @param wordList 
+/// @return kata yang valid
 Word GetValidInput(WordList *wordList);
 
-char *checkGuess(Word word, Word tebakan, char hint[]);
-
-void underscore(int n);
+/// @brief 
+/// @param word kata random wordle
+/// @param tebakan input tebakan user
+/// @param history hasil pengecekan/feedback hasil pengecekan
+/// @return hasil pengecekan
+char *checkGuess(Word word, Word tebakan, char history[]);
 
 void Wordle (User *users);
 #endif

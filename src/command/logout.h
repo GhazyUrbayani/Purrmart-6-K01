@@ -10,6 +10,6 @@ boolean isLoggedIn(User *user);
 
 /// @brief Me-logout user dengan cara mengosongkannya
 /// @param user variabel user yang ada di state program
-void logout(User *user);
+void logout(User *user, SList *userlist);
 
 #endif // LOGOUT_H

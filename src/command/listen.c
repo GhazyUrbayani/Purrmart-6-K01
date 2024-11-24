@@ -87,10 +87,10 @@ void listen(void) {
                 printf("Gagal me-request %s\n", barang);
             }
 
-        } else if (str_compare(STRING(currentWord), "STORE SUPPLY")) {
+        } else if (started && str_compare(STRING(currentWord), "STORE SUPPLY")) {
             store_supply(&item_request, item_list);
 
-        } else if (str_compare(STRING(currentWord), "STORE REMOVE")) {
+        } else if (started && str_compare(STRING(currentWord), "STORE REMOVE")) {
             printf("Nama barang yang akan dihapus: ");
             STARTSENTENCEINPUT();
 
@@ -104,11 +104,19 @@ void listen(void) {
             } else {
                 printf("Gagal menghapus %s dari store (Tidak ada %s di toko!).\n", namabarang, namabarang);
             }
+        } else if (started && (STRING(currentWord), "WORK")) {
+            simple_work(&logged_user);
         }
 
         // Outside command tree
         printf("Masukkan command: ");
         STARTSENTENCEINPUT();
+        for (int i = 0; i < user_list.size;i++) {
+            User *current = us_getItem(&user_list,i);
+            if (str_compare(current->name,logged_user.name)) {
+                current->money = logged_user.money;
+            }
+        }
     }
     // Outside loop
 }

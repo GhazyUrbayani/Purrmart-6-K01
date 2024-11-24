@@ -15,7 +15,7 @@ void simple_work(User *logged_user) {
     printf("Daftar kerjaan:\n");
     for (int i = 0; i < kerjaan.size; i++) {
         Kerja *current = (Kerja *) s_getItem(&kerjaan,i);
-        printf("\t%d. %s (pendapatan=%d,durasi=%0.0fs)\n",i+1,current->nama,current->gaji,current->durasi);
+        printf(" %d. %s (pendapatan=%d,durasi=%0.0fs)\n",i+1,current->nama,current->gaji,current->durasi);
     }
 
     printf("Masukan kerjaan yang dipilih: ");

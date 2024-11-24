@@ -7,10 +7,9 @@
 ## Fitur Utama
 1. **Menampilkan Barang Toko**: Lihat daftar barang yang tersedia di toko.
 2. **Permintaan dan Penyuplaian Barang**: Ajukan barang baru ke toko dan suplaikan barang berdasarkan antrian.
-3. **Wishlist dan Keranjang**: Simpan barang ke wishlist atau tambahkan ke keranjang untuk dibeli.
-4. **Bekerja untuk Menghasilkan Uang**: Pilih pekerjaan atau tantangan untuk mendapatkan uang virtual.
-5. **Mekanisme Login dan Register**: Buat akun atau masuk dengan kredensial pengguna.
-6. **Menyimpan dan Memuat Progress**: Simpan state aplikasi dan muat kembali dari file konfigurasi.
+3. **Bekerja untuk Menghasilkan Uang**: Pilih pekerjaan atau tantangan untuk mendapatkan uang virtual.
+4. **Mekanisme Login dan Register**: Buat akun atau masuk dengan kredensial pengguna.
+5. **Menyimpan dan Memuat Progress**: Simpan state aplikasi dan muat kembali dari file konfigurasi.
 
 ---
 
@@ -25,15 +24,18 @@
 ---
 
 ## Struktur Folder
-.
-- ├── bin/               # File binary hasil kompilasi
-- ├── save/              # Folder untuk menyimpan File save state
-- ├── src/               # Source code utama
-- │   ├── ADT/               # Folder berisi ADT yang digunakan
-- │   ├── console.c          # Implementasi commands
-- │   ├── console.h          # Header untuk commands
-- │   ├── main.c             # Entry point aplikasi
-- └── README.md          # Dokumentasi project
+- ├── data/             # Folder berisi data untuk game Wordle
+- ├── save/             # Folder untuk menyimpan save states
+- ├── src/              # Source code utama
+- │   ├── ADT/            # Folder berisi ADT yang digunakan
+- │   ├── command/        # Folder berisi file-file commands
+- │   ├── store/          # Folder berisi implementasi STORE
+- │   ├── structs/        # Folder berisi implementasi USER dan ITEM
+- │   ├── work/           # Folder berisi implementasi WORK dan WORK CHALLENGE
+- │   └── main.c          # Entry point aplikasi
+- ├── tests/            # Folder berisi tests untuk beberapa fitur program
+- ├── Makefile          # Makefile untuk membuat program dan tests
+- └── README.md         # Dokumentasi project
 - *Dokumen pendukung tugas besar yang lain dan lebih lengkap di Folder G-Drive
 
 ---
@@ -50,8 +52,16 @@
 ## Cara Kompilasi dan Menjalankan Program
 1. **Clone Repository**
    ```bash
-   git clone https://github.com/username/PURRMART-CLI.git
-   cd PURRMART-CLI
-
+   git clone https://github.com/GhazyUrbayani/Purrmart-6-K01.git
+   cd Purrmart-6-K01
+   ```
+2. **Compile**
+    ```bash
+    make main
+    ```
+3. Run
+    ```bash
+    ./main
+    ```
 ## Catatan
 Pastikan file konfigurasi awal berada di folder `save/`

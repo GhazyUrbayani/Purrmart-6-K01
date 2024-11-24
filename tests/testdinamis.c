@@ -1,7 +1,7 @@
 #include "./../src/structs/item.h"
 
 int main(void) {
-    printf("\n=== *** Test Start *** ===\n");
+    printf("\n=== *** Test List Dinamis *** ===\n");
 
     printf("\nTC 01 : Buat list item\n");
     DList *item_list = id_createList();

@@ -13,9 +13,10 @@ void store_list(DList *item_list) {
 
 boolean store_req(Queue *item_queue, DList *item_store, char *nama) {
     // Uji Queue
-    Queue *kocak = alokasi_salin(item_queue,sizeof(Queue));
-    for (int i = 0; i < item_queue->size; i++) {
-        Item *item = (Item *) dequeue(kocak);
+    int queue_count = item_queue->size;
+    for (int i = 0; i < queue_count; i++) {
+        Item *item = idequeue(item_queue);
+        ienqueue(item_queue,item);
         if (str_compare(item->name,nama)) {
             return 0;
         }

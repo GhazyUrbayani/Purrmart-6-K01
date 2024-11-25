@@ -79,8 +79,9 @@ void listen(void) {
         } else if (started && str_compare(STRING(currentWord), "SAVE")) {
             printf("Masukkan nama file: ");
             STARTWORDINPUT();
-            char *filename = STRING(currentWord);
+            char *filename = alokasi_salin(STRING(currentWord),currentWord.Length+1);
             SAVE(&user_list, item_list, filename);
+            free(filename);
 
         // ** STORE LIST Command ** //
         } else if (started && str_compare(STRING(currentWord), "STORE LIST")) {
@@ -91,13 +92,13 @@ void listen(void) {
             printf("Nama barang yang ingin di-request: ");
             STARTWORDINPUT();
 
-            char *barang;
-            CopyString(barang, STRING(currentWord));
+            char *barang = alokasi_salin(STRING(currentWord),currentWord.Length+1);
 
             int hasil = store_req(&item_request, item_list, barang);
             printf(hasil ?
                 "Berhasil me-request %s\n" :
                 "Gagal me-request %s\n", barang);
+            free(barang);
 
         // ** STORE SUPPLY Command ** //
         } else if (started && str_compare(STRING(currentWord), "STORE SUPPLY")) {
@@ -108,13 +109,13 @@ void listen(void) {
             printf("Nama barang yang akan dihapus: ");
             STARTSENTENCEINPUT();
 
-            char *namabarang = (char *)malloc(currentWord.Length + 1);
-            CopyString(namabarang, STRING(currentWord));
+            char *namabarang = alokasi_salin(STRING(currentWord),currentWord.Length+1);
 
             boolean hasil = store_remove(item_list, namabarang);
             printf(hasil ? 
                 "Berhasil menghapus %s dari store.\n" :
                 "Gagal menghapus %s dari store (Tidak ada %s di toko!).\n", namabarang, namabarang);
+            free(namabarang);
 
         // ** WORK CHALLENGE Command ** //
         } else if (started && isLoggedIn(&logged_user) &&
@@ -162,8 +163,9 @@ void listen(void) {
         if (str_compare(STRING(currentWord),"y")) {
             printf("Masukkan nama file: ");
             STARTWORDINPUT();
-            char *filename = STRING(currentWord);
+            char *filename = alokasi_salin(STRING(currentWord),currentWord.Length+1);
             SAVE(&user_list, item_list, filename);
+            free(filename);
         }
     }
     printf("Goodbye!\n");

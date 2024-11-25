@@ -43,11 +43,11 @@ void listen(void) {
         // ** REGISTER Command ** //
         } else if (started && str_compare(STRING(currentWord), "REGISTER")) {
             printf("Masukkan username: ");
-            ADVWORD();
+            STARTWORDINPUT();
             Word username = currentWord;
 
             printf("Masukkan password: ");
-            ADVWORD();
+            STARTWORDINPUT();
             Word password = currentWord;
 
             User candidate;

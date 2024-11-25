@@ -11,7 +11,7 @@ void user_register(SList *user_list, User *candidate_user) {
             printf("Nama atau password tidak boleh terdiri lebih dari satu kata!\n");
         } else {
             us_addItem(user_list,candidate_user);
-            printf("Berhasil meregister user!\n");  
+            printf("Berhasil meregister user dengan nama %s!\n",candidate_user->name);  
         }
     } else {
         printf("User sudah ada!\n");

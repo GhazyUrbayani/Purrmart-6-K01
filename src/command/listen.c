@@ -17,7 +17,7 @@ void listen(void) {
     boolean started = false;               // Program start state
 
     // ** Command Input Loop ** //
-    printf("Masukkan command: ");
+    printf("Masukkan command (HELP jika butuh arahan): ");
     STARTSENTENCEINPUT();
 
     while (!WordEqual(stringToWord("EXIT"))) {
@@ -42,6 +42,7 @@ void listen(void) {
 
         // ** REGISTER Command ** //
         } else if (started && str_compare(STRING(currentWord), "REGISTER")) {
+            printf("\nUser dan password hanya satu kata, sehingga hanya kata pertama yang akan dihiraukan.\n");
             printf("Masukkan username: ");
             STARTWORDINPUT();
             Word username = currentWord;
@@ -56,6 +57,7 @@ void listen(void) {
 
         // ** LOGIN Command ** //
         } else if (started && str_compare(STRING(currentWord), "LOGIN")) {
+            printf("\nUser dan password hanya satu kata, sehingga hanya kata pertama yang akan dihiraukan.\n");
             printf("Masukkan username: ");
             STARTWORDINPUT();
             Word username = currentWord;
@@ -150,7 +152,7 @@ void listen(void) {
         }
 
         // Prompt for next command
-        printf("Masukkan command: ");
+        printf("Masukkan command (HELP jika butuh arahan): ");
         STARTSENTENCEINPUT();
     }
     // Di luar while

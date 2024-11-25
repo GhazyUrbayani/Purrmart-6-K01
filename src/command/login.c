@@ -8,7 +8,7 @@ void login(SList *user_list, User *userout, char *username, char *password) {
                 userout->money = current->money;
                 CopyString(userout->name,username);
                 CopyString(userout->password,password);
-                printf("Login berhasil!\n");
+                printf("Login dengan nama %s berhasil!\n",userout->name);
                 return;
             } else {
                 printf("Password salah!\n");

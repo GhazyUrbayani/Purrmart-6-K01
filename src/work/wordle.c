@@ -69,7 +69,7 @@ char *checkGuess(Word word, Word tebakan, char history[]){
             for (int j = 0; j < 5; j++) {
                 if (!used[j] && tebakan.TabWord[i] == word.TabWord[j]) {
                     history[i * 3 + 1] = '*'; 
-                    history[j] = true;       // the character is set as used   
+                    used[j] = true;       // the character is set as used   
                 }
             }
         }
@@ -95,10 +95,10 @@ void Wordle (User *users){
     Word word = SelectWord(&wordList); // get the random word
     int hadiah = 10000;
     int nyawa = 6;
-    char history[6][16]; // store the hint from checkguess feedback
+    char history[6][16] ={{0}}; // store the hint from checkguess feedback
     int percobaan = 0;
     printf("WELCOME TO W0RDL3, YOU HAVE 6 CHANCES TO ANSWER BEFORE YOU LOSE\n");
-    printf("_ _ _ _ _\n _ _ _ _ _\n _ _ _ _ _\n _ _ _ _ _\n _ _ _ _ _\n _ _ _ _ _\n");
+    printf("_ _ _ _ _\n_ _ _ _ _\n_ _ _ _ _\n_ _ _ _ _\n_ _ _ _ _\n_ _ _ _ _\n");
     while (nyawa > 0) {
         currentWord = GetValidInput(&wordList);
         checkGuess(word,  currentWord , history[percobaan]);

@@ -90,7 +90,7 @@ void listen(void) {
         // ** STORE REQUEST Command ** //
         } else if (started && str_compare(STRING(currentWord), "STORE REQUEST")) {
             printf("Nama barang yang ingin di-request: ");
-            STARTWORDINPUT();
+            STARTSENTENCEINPUT();
 
             char *barang = alokasi_salin(STRING(currentWord),currentWord.Length+1);
 

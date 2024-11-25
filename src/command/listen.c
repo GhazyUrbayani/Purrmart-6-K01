@@ -57,11 +57,10 @@ void listen(void) {
         // ** LOGIN Command ** //
         } else if (started && str_compare(STRING(currentWord), "LOGIN")) {
             printf("Masukkan username: ");
-            ADVWORD();
+            STARTWORDINPUT();
             Word username = currentWord;
-
             printf("Masukkan password: ");
-            ADVWORD();
+            STARTWORDINPUT();
             Word password = currentWord;
 
             login(&user_list, &logged_user, STRING(username), STRING(password));
@@ -77,7 +76,7 @@ void listen(void) {
         // ** SAVE Command ** //
         } else if (started && str_compare(STRING(currentWord), "SAVE")) {
             printf("Masukkan nama file: ");
-            ADVWORD();
+            STARTWORDINPUT();
             char *filename = STRING(currentWord);
             SAVE(&user_list, item_list, filename);
 
@@ -160,7 +159,7 @@ void listen(void) {
         STARTWORDINPUT();
         if (str_compare(STRING(currentWord),"y")) {
             printf("Masukkan nama file: ");
-            ADVWORD();
+            STARTWORDINPUT();
             char *filename = STRING(currentWord);
             SAVE(&user_list, item_list, filename);
         }

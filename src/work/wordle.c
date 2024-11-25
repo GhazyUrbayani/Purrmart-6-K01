@@ -93,7 +93,7 @@ void Wordle (User *users){
     WordList wordList;
     LoadWords(&wordList);
     Word word = SelectWord(&wordList); // get the random word
-    int hadiah = 10000;
+    int hadiah = 1000;
     int nyawa = 6;
     char history[6][16] ={{0}}; // store the hint from checkguess feedback
     int percobaan = 0;

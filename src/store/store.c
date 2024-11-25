@@ -56,6 +56,7 @@ void store_supply(Queue *item_queue, DList *item_list) {
         printf("%s dikembalikan ke antrian.\n",item_name);
     } else if (str_compare(STRING(currentWord),"TOLAK")) {
         printf("%s dihapus dari antrian.\n",item_name);
+        idequeue(item_queue);
     }
 }
 

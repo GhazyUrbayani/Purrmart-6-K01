@@ -19,11 +19,13 @@ int STARTWORD(const char *filename) {
 
 // Memulai mesin kata dari input standar (stdin).
 void STARTWORDINPUT(void) {
+    rewind(stdin);
     STARTINPUT();
     ADVWORD();
 }
 
 void STARTSENTENCEINPUT(void) {
+    rewind(stdin);
     STARTINPUT();
 
     int i = 0;

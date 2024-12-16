@@ -43,3 +43,5 @@ char *str_concat(char *s1, char *s2);
 /// @brief Men-delay program
 /// @param seconds detik
 void delay(double seconds);
+
+char* str_copy(char* tobecopied);

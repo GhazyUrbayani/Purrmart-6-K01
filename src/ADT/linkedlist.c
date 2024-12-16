@@ -17,13 +17,13 @@ void ll_insert(LinkedList* l, char* key) {
 }
 
 linkednode* ll_search(LinkedList* l, char* key) {
-    linkednode* cursor = l->head;
-    while (cursor != NULL) {
-        if (str_compare(cursor->key,key)) {
-            return cursor;
+    linkednode* current_node = l->head;
+    while (current_node != NULL) {
+        if (str_compare(current_node->key,key)) {
+            return current_node;
         }
     }
-    return cursor;
+    return current_node;
 }
 
 void ll_delete(LinkedList* l, char* key) {
@@ -47,21 +47,52 @@ void ll_delete(LinkedList* l, char* key) {
 }
 
 void ll_printList(LinkedList* l) {
-    linkednode* cursor = l->head;
-    int count = 1;
-    while (cursor != NULL) {
-        printf("%d. %s\n", count, cursor->key);
-        count++; cursor = cursor->next;
-    }
+    ll_printToFile(l,stdout);
 }
 
 void ll_freeList(LinkedList* l) {
+    // Mulai di head
     linkednode* cursor = l->head;
     while (cursor != NULL) {
+        // Selama cursor bukan NIL
+        // Simpan next-nya di suatu variabel dulu
         linkednode* nextcursor = cursor->next;
+
+        // Free char*-nya
         free(cursor->key);
+        // Free alokasi node-nya
         free(cursor);
+        
+        // Ke node selanjutnya
         cursor = nextcursor;
     }
     l->head = NULL;
+}
+
+void ll_printToFile(LinkedList* l, FILE* stream) {
+    if (ll_isEmpty(l)) {
+        return;
+    } else {
+        linkednode* currentnode = l->head;
+        while (currentnode != NULL) {
+            fprintf(stream,"%s\n", currentnode->key);
+            currentnode = currentnode->next;
+        }
+    }
+}
+
+boolean ll_isEmpty(LinkedList* l) {
+    return l->head == NULL;
+}
+
+int ll_count(LinkedList* list) {
+    int count = 0;
+    if (!ll_isEmpty(list)) {
+        linkednode* currentnode = list->head;
+        while(currentnode != NULL) {
+            count++;
+            currentnode = currentnode->next;
+        }
+    }
+    return count;
 }

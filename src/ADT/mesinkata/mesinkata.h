@@ -51,4 +51,6 @@ Word stringToWord(const char *str);
 // Menyalin isi string ke buffer baru
 void CopyString(char *new, const char *str);
 
+Word parseWordSpace(int nthword);
+
 #endif // MESIN_KATA_H

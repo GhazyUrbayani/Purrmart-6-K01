@@ -9,6 +9,8 @@ void login(SList *user_list, User *userout, char *username, char *password) {
                 CopyString(userout->name,username);
                 CopyString(userout->password,password);
                 printf("Login dengan nama %s berhasil!\n",userout->name);
+                userout->riwayat_pembelian = current->riwayat_pembelian;
+                userout->wishlist = current->wishlist;
                 return;
             } else {
                 printf("Password salah!\n");

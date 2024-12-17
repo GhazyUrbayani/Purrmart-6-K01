@@ -12,6 +12,7 @@
 #include "./../work/tebakangka.h"
 #include "./../work/wordle.h"
 #include "./../ADT/mesinkata/mesinkata.h"
+#include "./../ADT/utils.h"
 
 void listen(void);
 

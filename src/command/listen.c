@@ -1,5 +1,6 @@
 #include "listen.h"
 #include <stdio.h>
+#include "./../ADT/utils.h"
 
 // Function Definition
 void listen(void) {
@@ -142,6 +143,27 @@ void listen(void) {
         } else if (started && isLoggedIn(&logged_user) &&
                    str_compare(STRING(currentWord), "WORK")) {
             simple_work(&logged_user);
+
+        } else if (started && str_compare(STRING(currentWord), "PRINTUSERS")) {
+            us_printList(&user_list);
+
+        // COMMAND PROFILE
+        } else if (started && isLoggedIn(&logged_user) && str_compare(STRING(currentWord), "PROFILE")) {
+            printProfile(&logged_user);
+
+        // COMMAND HISTORY
+        } else if (started && isLoggedIn(&logged_user) && str_startwith(STRING(currentWord),"HISTORY ")) {
+            Word arg = parseWordSpace(2);
+            if (arg.Length == 0) {
+                printf("Masukan jumlah history yang ingin ditampilkan!\n");
+            } else {
+                int limitz = WordToInt(arg);
+                if (limitz == -1) {
+                    printf("Jumlah history tidak valid!\n");
+                } else {
+                    printUserHistory(&logged_user,limitz);
+                }
+            }
         }
 
         // ** Update User Data ** //

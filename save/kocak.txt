@@ -1,0 +1,41 @@
+4
+10 AK47
+20 Lalabu
+20 Ayam Goreng Crisbar
+500 Meong
+2
+100 user1 alstrukdatkeren
+640  AK47
+100  AK47
+35  Lalabu
+10  AK47
+500  Meong
+20  Ayam Goreng Crisbar
+
+
+-1 Goreng Crisbar
+0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ user2 kerenbangetkak

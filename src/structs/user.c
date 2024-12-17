@@ -81,7 +81,6 @@ void us_ReadUser(SList *userList) {
         Riwayat currentRiwayat = newRiwayat(namabarang, total_biaya);
         stack_push(&user.riwayat_pembelian,currentRiwayat);
     }
-    print_stack(&user.riwayat_pembelian);
     ADVWORD();
     int jumlah_wishlist = WordToInt(currentWord);
     for (int j = 0; j < jumlah_wishlist; j++) {
@@ -90,7 +89,6 @@ void us_ReadUser(SList *userList) {
         ll_insert(&user.wishlist,nama_barang);
     }
     us_addItem(userList, &user);
-    ll_printList(&user.wishlist);
 }
 void us_WriteUsers(SList *users, FILE *file) {
     fprintf(file, "%zu\n", users->size);
@@ -98,9 +96,10 @@ void us_WriteUsers(SList *users, FILE *file) {
         User *user = (User *)users->items[i];
         fprintf(file, "%d %s %s\n", user->money, user->name, user->password);
         int jumlah_riwayat = user->riwayat_pembelian.top+1;
-        fprintf(file, "%d",jumlah_riwayat);
+        fprintf(file, "%d\n",jumlah_riwayat);
         print_stackToFile(&user->riwayat_pembelian,file);
         int jumlah_wishlist = ll_count(&user->wishlist);
+        fprintf(file, "%d\n",jumlah_wishlist);
         ll_printToFile(&user->wishlist,file);
     }
 }

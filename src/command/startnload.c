@@ -16,7 +16,6 @@ int STARTPROGRAM(SList *users, DList **items, char *filename) {
     us_initList(users);
     for (int i = 0; i < num_of_users; i++) {
         us_ReadUser(users);
-        printf("user %d read.\n",i);
     }
     return result;
 }

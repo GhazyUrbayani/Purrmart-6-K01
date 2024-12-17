@@ -12,7 +12,6 @@ int STARTWORD(const char *filename) {
         ADVWORD();
         return true;
     } else {
-        fprintf(stderr, "Error: File kosong atau tidak bisa dibaca.\n");
         return 0;
     }
 }

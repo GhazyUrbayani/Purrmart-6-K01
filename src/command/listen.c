@@ -31,15 +31,19 @@ void listen(void) {
             started = true;
 
         // ** LOAD Command ** //
-        } else if (str_compare(STRING(currentWord), "LOAD")) {
-            printf("Masukkan nama file: ");
-            ADVWORD();
-            char *filename = str_concat(STRING(currentWord), "");
-            int result = STARTPROGRAM(&user_list, &item_list, filename);
-            printf(result ?
-                "File %s berhasil di-load.\n" :
-                "File %s gagal di-load.\n", filename);
-            started = true;
+        } else if (str_startwith(STRING(currentWord),"LOAD")) {
+            Word filename = parseWordSpace(2);
+            if (filename.Length == 0) {
+                printf("Masukkan nama file!\n");
+            } else {
+                int loadsuccess = STARTPROGRAM(&user_list, &item_list, filename.TabWord);
+                if (loadsuccess == true) {
+                    printf("File %s berhasil di-load.\n", filename.TabWord);
+                    started = true;
+                } else {
+                    printf("File %s gagal di-load.\n", filename.TabWord);
+                }
+            }
 
         // ** REGISTER Command ** //
         } else if (started && str_compare(STRING(currentWord), "REGISTER")) {
@@ -77,12 +81,13 @@ void listen(void) {
             logout(&logged_user);
 
         // ** SAVE Command ** //
-        } else if (started && str_compare(STRING(currentWord), "SAVE")) {
-            printf("Masukkan nama file: ");
-            STARTWORDINPUT();
-            char *filename = alokasi_salin(STRING(currentWord),currentWord.Length+1);
-            SAVE(&user_list, item_list, filename);
-            free(filename);
+        } else if (started && str_startwith(STRING(currentWord), "SAVE")) {
+            Word filename = parseWordSpace(2);
+            if (filename.Length == 0) {
+                printf("Masukkan nama file!\n");
+            } else {
+                SAVE(&user_list, item_list, filename.TabWord);
+            }
 
         // ** STORE LIST Command ** //
         } else if (started && str_compare(STRING(currentWord), "STORE LIST")) {
@@ -152,7 +157,7 @@ void listen(void) {
             printProfile(&logged_user);
 
         // COMMAND HISTORY
-        } else if (started && isLoggedIn(&logged_user) && str_startwith(STRING(currentWord),"HISTORY ")) {
+        } else if (started && isLoggedIn(&logged_user) && str_startwith(STRING(currentWord),"HISTORY")) {
             Word arg = parseWordSpace(2);
             if (arg.Length == 0) {
                 printf("Masukan jumlah history yang ingin ditampilkan!\n");

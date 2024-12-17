@@ -5,8 +5,10 @@ void store_list(DList *item_list) {
     if (item_list->size==0) {
         printf("Toko kosong.\n");
     } else {
+        printf("List barang yang ada di toko:\n");
         for (int i = 0; i < item_list->size; i++) {
-            printf("%d. %s\n", i+1, id_getItem(item_list,i)->name);
+            Item* current_item = id_getItem(item_list,i);
+            printf("- %s - Harga: %d\n", current_item->name, current_item->price);
         }
     }
 }

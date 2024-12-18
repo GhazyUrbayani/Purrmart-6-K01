@@ -1,3 +1,5 @@
+#ifndef WISHLIST_SWAP_H
+#define WISHLIST_SWAP_H
 # include <stdio.h>
 # include <stdlib.h>
 # include "../ADT/linkedList.h"
@@ -8,3 +10,4 @@
  * FS: wishlist[idx1] dan wishlist[idx2] ditukar.
  */
 void wishlistswap (LinkedList* wishlist, int idx1, int idx2);
+#endif

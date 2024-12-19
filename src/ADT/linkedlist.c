@@ -9,11 +9,19 @@ void ll_initList(LinkedList* l) {
 
 void ll_insert(LinkedList* l, char* key) {
     linkednode* new = malloc(sizeof(linkednode));
-    new->next = l->head;
-    new->prev = NULL;
+    new->next = NULL;
     new->key = alokasi_salin(key,str_len(key)+1);
-    
-    l->head = new;
+    if (l->head == NULL){
+        new->prev = NULL;
+        l->head = new;
+    }else{
+        linkednode* curr = l->head;
+        while (curr->next != NULL) {
+            curr = curr->next;
+        }
+        new->prev = curr;
+        curr->next = new;
+    }
 }
 
 linkednode* ll_search(LinkedList* l, char* key) {
@@ -22,6 +30,7 @@ linkednode* ll_search(LinkedList* l, char* key) {
         if (str_compare(current_node->key,key)) {
             return current_node;
         }
+        current_node = current_node->next;
     }
     return current_node;
 }
@@ -33,16 +42,18 @@ void ll_delete(LinkedList* l, char* key) {
         // Key ada
         
         if (cursor->prev != NULL) {
-            // Kasus 1. Key merupakan elemen pertama list
+            // Kasus 1. Key bukan elemen pertama list 
             cursor->prev->next = cursor->next;
         } else {
-            // Kasus 2. Key bukan elemen pertama list
+            // Kasus 2. Key merupakan elemen pertama list
             l->head = cursor->next;
         }
         if (cursor->next != NULL) {
             // Key bukan elemen terakhir, update next-nya
             cursor->next->prev = cursor->prev;
         }
+        free(cursor->key);
+        free(cursor);
     }
 }
 

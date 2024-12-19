@@ -6,23 +6,22 @@ void CreateUser(User *u, char name[], char password[], int money) {
     CopyString(u->name, name);
     CopyString(u->password, password);
     u->money = money;
+    initMap(&u->keranjang);
+    initStack(&u->riwayat_pembelian);
+    ll_initList(&u->wishlist);
+    
 }
 
 boolean CompareUser(User u1, User u2) {
-    int i = 0;
-    while (u1.name[i] != '\0' && u2.name[i] != '\0') {
-        if (u1.name[i] != u2.name[i]) {
-            return false;
-        }
-        i++;
-    }
-    return u1.name[i] == '\0' && u2.name[i] == '\0';
+    return (str_compare(u1.name,u2.name));
 }
 
 void DeleteUser(User *u) {
     u->name[0] = '\0';
     u->password[0] = '\0';
     u->money = 0;
+    ll_freeList(&u->wishlist);
+    u->keranjang.neff = 0;
 }
 /* 
     List Statis User
@@ -50,13 +49,37 @@ void us_clearList(SList *list) {
 }
 
 void us_ReadUser(SList *userList) {
+    ADVWORD();
+    int uang_user = WordToInt(currentWord);
+
+    ADVWORD();
+    char nama_user[STR_MAX];
+    CopyString(nama_user,currentWord.TabWord);
+
+    ADVWORD();
+    char password_user[STR_MAX];
+    CopyString(password_user,currentWord.TabWord);
+    
     User user;
+    CreateUser(&user,nama_user,password_user,uang_user);
+
     ADVWORD();
-    user.money = WordToInt(currentWord);
+    int jumlah_riwayat_pembelian = WordToInt(currentWord);
+    for (int i = 0; i < jumlah_riwayat_pembelian; i++) {
+        ADVWORD();
+        int total_biaya = WordToInt(currentWord);
+        ADVSENTENCENL();
+        char* namabarang = str_copy(currentWord.TabWord);
+        Riwayat currentRiwayat = newRiwayat(namabarang, total_biaya);
+        stack_push(&user.riwayat_pembelian,currentRiwayat);
+    }
     ADVWORD();
-    CopyString(user.name, currentWord.TabWord);
-    ADVWORD();
-    CopyString(user.password, currentWord.TabWord);
+    int jumlah_wishlist = WordToInt(currentWord);
+    for (int i = 0; i < jumlah_wishlist; i++) {
+        ADVSENTENCENL();
+        char* nama_barang = str_copy(currentWord.TabWord);
+        ll_insert(&user.wishlist,nama_barang);
+    }
     us_addItem(userList, &user);
 }
 void us_WriteUsers(SList *users, FILE *file) {
@@ -64,6 +87,11 @@ void us_WriteUsers(SList *users, FILE *file) {
     for (size_t i = 0; i < users->size; i++) {
         User *user = (User *)users->items[i];
         fprintf(file, "%d %s %s\n", user->money, user->name, user->password);
+        int jumlah_riwayat = user->riwayat_pembelian.top+1;
+        fprintf(file, "%d",jumlah_riwayat);
+        print_stackToFile(&user->riwayat_pembelian,file);
+        int jumlah_wishlist = ll_count(&user->wishlist);
+        ll_printToFile(&user->wishlist,file);
     }
 }
 
@@ -85,58 +113,4 @@ size_t us_search(SList *userList, User *user) {
         }
     }
     return -1;
-}
-
-/* 
-    List Dinamis User
- */
-DList* ud_createList() {
-    return d_createList();
-}
-void ud_addItem(DList *list, User *item) {
-    d_addItem(list,item,sizeof(User));
-}
-void ud_insertItem(DList *list, size_t index, User *item) {
-    d_insertItem(list,index,item,sizeof(User));
-}
-void ud_removeItem(DList *list, size_t index) {
-    d_removeItem(list,index);
-}
-User* ud_getItem(DList *list, size_t index) {
-    d_getItem(list,index);
-}
-void ud_setItem(DList *list, size_t index, User *item) {
-    d_setItem(list,index,item,sizeof(User));
-}
-void ud_clearList(DList *list) {
-    d_clearList(list);
-}
-void ud_freeList(DList *list) {
-    d_freeList(list);
-}
-
-/* 
-    Queue User
- */
-
-void uinitQueue(Queue *queue) {
-    initQueue(queue);
-}
-boolean uisQueueEmpty(Queue *queue) {
-    return isQueueEmpty(queue);
-}
-boolean uisQueueFull(Queue *queue) {
-    return isQueueFull(queue);
-}
-void uenqueue(Queue *queue, User *user) {
-    enqueue(queue,user,sizeof(User));
-}
-User* udequeue(Queue *queue) {
-    dequeue(queue);
-}
-User* upeekQueue(Queue *queue) {
-    peekQueue(queue);
-}
-void uclearQueue(Queue *queue) {
-    clearQueue(queue);
 }

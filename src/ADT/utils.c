@@ -61,6 +61,9 @@ char *str_concat(char *s1, char *s2) {
     return s3;
 } 
 
+char* str_copy(char* tobecopied) {
+    return str_concat("",tobecopied);
+}
 
 void delay(double seconds) {
     clock_t start_time = clock(); // Get the current clock time

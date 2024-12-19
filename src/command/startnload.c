@@ -9,6 +9,7 @@ int STARTPROGRAM(SList *users, DList **items, char *filename) {
     for (int i = 0; i < num_of_items; i++) {
         ReadItem(*items);
     }
+
     // Menginput user
     ADVWORD();
     int num_of_users = WordToInt(currentWord);

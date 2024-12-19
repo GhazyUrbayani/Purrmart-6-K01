@@ -7,6 +7,9 @@
 #include "./../ADT/listdinamis.h"
 #include "./../ADT/queue.h"
 #include "./../ADT/utils.h"
+#include "./../ADT/linkedlist.h"
+#include "./../ADT/stack.h"
+#include "./../ADT/map.h"
 
 #include <stdio.h>
 
@@ -19,6 +22,9 @@ typedef struct {
     char name[STR_MAX];     // Nama user
     char password[STR_MAX]; // Password user
     int money;              // Uang user
+    Map keranjang;
+    Stack riwayat_pembelian;
+    LinkedList wishlist;
 } User;
 
 /* *** Konstruktor *** */
@@ -67,30 +73,4 @@ void us_WriteUsers(SList *user_list, FILE *file);
 boolean us_isUserin(SList *userList, User *user);
 
 size_t us_search(SList *userList, User *user);
-
-/* 
-    List Dinamis User
- */
-
-DList* ud_createList();
-void ud_addItem(DList *list, User *item);
-void ud_insertItem(DList *list, size_t index, User *item);
-void ud_removeItem(DList *list, size_t index);
-User* ud_getItem(DList *list, size_t index);
-void ud_setItem(DList *list, size_t index, User *item);
-void ud_clearList(DList *list);
-void ud_freeList(DList *list);
-
-/* 
-    Queue User
- */
-
-void uinitQueue(Queue *queue);
-boolean uisQueueEmpty(Queue *queue);
-boolean uisQueueFull(Queue *queue);
-void uenqueue(Queue *queue, User *User);
-User* udequeue(Queue *queue);
-User* upeekQueue(Queue *queue);
-void uclearQueue(Queue *queue);
-
 #endif

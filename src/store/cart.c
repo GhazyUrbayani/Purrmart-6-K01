@@ -96,7 +96,7 @@ void cartPay(Map* keranjang_user, Stack* riwayat_user, int* uang_user, DList* st
                 *uang_user -= total_harga;
             } else {
                 // Gagal beli: gak ada duit
-                printf("Uang kamu tidak cukup!");
+                printf("Uang kamu tidak cukup!\n");
             }
         } else {
             return;
@@ -118,6 +118,10 @@ char* transaksi_termahal(Map* keranjang_belanja, DList* toko_barang) {
             if (total > max) {
                 max = total;
                 barangbiggest = barang_keranjang.nama_barang;
+            } else if (total == max) {
+                if (*barang_keranjang.nama_barang > *barangbiggest) {
+                    barangbiggest = barang_keranjang.nama_barang;
+                }
             }
         }
         return str_copy(barangbiggest);

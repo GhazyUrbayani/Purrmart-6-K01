@@ -34,7 +34,18 @@ void help_m(){
     printf (" 4. STORE REQUEST -> Untuk meminta penambahan barang\n");
     printf (" 5. STORE SUPPLY -> Untuk menambahkan barang dari permintaan\n");
     printf (" 6. STORE REMOVE -> Untuk menghapus barang\n");
-    printf (" 7. LOGOUT -> Untuk keluar dari sesi\n");
-    printf (" 8. SAVE -> Untuk menyimpan state ke dalam file\n");
-    printf (" 9. EXIT -> Untuk keluar dari program\n");
+    printf (" 7. PROFILE -> Untuk melihat data diri pengguna\n");
+    printf (" 8. CART ADD <nama> <n> -> Untuk menambah n barang ke keranjang belanja\n");
+    printf (" 9. CART REMOVE <nama> <n> -> Untuk menghapus n barang ke keranjang belanja\n");
+    printf (" 10. CART SHOW -> Untuk menunjukkan isi keranjang belanja\n");
+    printf (" 11. CART PAY -> Untuk membeli barang dalam keranjang belanja\n");
+    printf (" 12. HISTORY <n> -> Untuk menunjukkan riwayat pembelian pengguna\n");
+    printf (" 13. WISHLIST ADD -> Untuk menambah suatu barang ke wishlist\n");
+    printf (" 14. WISHLIST SWAP <i> <j> -> Untuk menukar urutan barang posisi ke-i dengan barang posisi ke-j pada wishlist\n");
+    printf (" 15. WISHLIST REMOVE <i> -> Untuk menghapus barang pada posisi ke-i ke keranjang belanja\n");
+    printf (" 16. WISHLIST CLEAR -> Untuk menghapus semua barang dari wishlist\n");
+    printf (" 17. WISHLIST SHOW -> Untuk menampilkan barang dalam wishlist\n");
+    printf (" 18. LOGOUT -> Untuk keluar dari sesi\n");
+    printf (" 19. SAVE -> Untuk menyimpan state ke dalam file\n");
+    printf (" 20. EXIT -> Untuk keluar dari program\n");
 }

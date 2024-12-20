@@ -160,3 +160,68 @@ Word parseWordSpace(int nthword) {
 
     return new;
 }
+
+Word parseWhenNumber() {
+    Word new; new.Length = 0;
+    char* cursor = currentWord.TabWord;
+    while (*cursor != '\0' && *cursor < '0' || *cursor > '9') {
+        cursor++;
+    }
+
+    while (*cursor != '\0') {
+        new.TabWord[new.Length++] = *cursor++;
+    }
+
+    new.TabWord[new.Length] = '\0';
+    
+    return new;
+}
+
+Word parseUntilNumber(Word w) {
+    Word new; new.Length = 0;
+    char* cursor = w.TabWord;
+    while (*cursor != '\0' && (*cursor < '0' || *cursor > '9')) {
+        new.TabWord[new.Length++] = *cursor++;
+    }
+    new.TabWord[--new.Length] = '\0';
+
+    return new;
+}
+
+Word parsenth(Word w, int nth) {
+    int current_nthword = 1;
+    Word new; new.Length = 0;
+    char* cursor = w.TabWord;
+
+    // Kondisi ngeskip: belum endstring dan belum kata ke n
+    while (*cursor != '\0' && current_nthword != nth) {
+        if (*cursor == ' ') {
+            current_nthword++;
+        }
+        cursor++;
+    }
+
+    // Akuisisi kata ke-n
+    while (*cursor != '\0' && *cursor != ' ') {
+        new.TabWord[new.Length++] = *cursor++;
+    }
+    new.TabWord[new.Length] = '\0';
+
+    return new;
+}
+
+int countWords(Word w) {
+    int count = 0;
+    boolean dalamkata = false;
+    char* cursor = w.TabWord;
+
+    for (; *cursor != '\0'; cursor++) {
+        if (*cursor == ' ') {
+            dalamkata = false;
+        } else if (!dalamkata) {
+            dalamkata = true;
+            count++;
+        }
+    }
+    return count;
+}

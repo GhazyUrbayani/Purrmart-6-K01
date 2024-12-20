@@ -14,5 +14,5 @@ void cartShow(Map* keranjang_user, DList* item_store);
 
 void cartPay(Map* keranjang_user, Stack* riwayat_user, int* uang_user, DList* store_items);
 
-int lokasi_max_total(Map* keranjang_belanja, DList* toko_barang);
+char* transaksi_termahal(Map* keranjang_belanja, DList* toko_barang);
 #endif

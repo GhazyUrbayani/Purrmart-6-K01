@@ -34,4 +34,6 @@ boolean ll_isEmpty(LinkedList* list);
 
 int ll_count(LinkedList* list);
 
+linkednode* ll_get_node_at(LinkedList* list, int index);
+
 #endif

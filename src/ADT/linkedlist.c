@@ -10,7 +10,7 @@ void ll_initList(LinkedList* l) {
 void ll_insert(LinkedList* l, char* key) {
     linkednode* new = malloc(sizeof(linkednode));
     new->next = NULL;
-    new->key = alokasi_salin(key,str_len(key)+1);
+    new->key = str_copy(key);
     if (l->head == NULL){
         new->prev = NULL;
         l->head = new;
@@ -106,4 +106,16 @@ int ll_count(LinkedList* list) {
         }
     }
     return count;
+}
+
+linkednode* ll_get_node_at(LinkedList* list, int index) {
+    linkednode* current = list->head;
+    int i = 1;
+
+    while (current != NULL && i < index) {
+        current = current->next;
+        i++;
+    }
+
+    return current;
 }

@@ -1,5 +1,6 @@
 #ifndef WISHLIST_REMOVE_H
 #define WISHLIST_REMOVE_H
+#include "./../ADT/utils.h"
 
 #include "./../ADT/linkedlist.h"
 

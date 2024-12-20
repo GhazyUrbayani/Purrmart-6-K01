@@ -5,6 +5,8 @@
         "utils.h": "c",
         "store.h": "c",
         "wordle.h": "c",
-        "liststatis.h": "c"
+        "liststatis.h": "c",
+        "wishlist-swap.h": "c",
+        "listdinamis.h": "c"
     }
 }

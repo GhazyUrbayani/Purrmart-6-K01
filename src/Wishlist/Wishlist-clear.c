@@ -1,6 +1,7 @@
 # include <stdio.h>
 # include <stdlib.h>
-# include "../ADT/linkedList.h"
+# include "./../ADT/linkedlist.h"
+
 # include "Wishlist-clear.h"
 
 void wishlistclear (LinkedList  *wishlist){
@@ -8,6 +9,6 @@ void wishlistclear (LinkedList  *wishlist){
         printf("Wishlist kosong\n");
         return;
     }
-    ll_clear(wishlist);
+    ll_freeList(wishlist);
     printf("Wishlist berhasil dihapus\n");
 }

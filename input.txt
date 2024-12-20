@@ -1,0 +1,4 @@
+START
+LOGIN
+user1
+alstrukdatkeren

@@ -29,7 +29,7 @@ testwork :
 	gcc -o ./tests/testwork ./src/work/work.c ./tests/testwork.c ./src/ADT/liststatis.c ./src/ADT/mesinkarakter/mesinkarakter.c ./src/ADT/mesinkata/mesinkata.c ./src/ADT/utils.c ./src/structs/user.c ./src/ADT/listdinamis.c ./src/ADT/queue.c && ./tests/testwork
 
 main :
-	gcc -o main ./src/main.c ./src/ADT/mesinkarakter/mesinkarakter.c ./src/ADT/mesinkata/mesinkata.c ./src/ADT/listdinamis.c ./src/ADT/liststatis.c ./src/ADT/queue.c ./src/ADT/utils.c ./src/command/listen.c ./src/command/login.c ./src/command/logout.c ./src/command/register.c ./src/command/save.c ./src/command/startnload.c ./src/structs/item.c ./src/structs/user.c ./src/store/store.c ./src/work/work.c ./src/work/tebakangka.c ./src/work/wordle.c ./src/command/help.c ./src/ADT/stack.c ./src/ADT/linkedlist.c ./src/ADT/map.c
+	gcc -o main ./src/main.c ./src/ADT/mesinkarakter/mesinkarakter.c ./src/ADT/mesinkata/mesinkata.c ./src/ADT/listdinamis.c ./src/ADT/liststatis.c ./src/ADT/queue.c ./src/ADT/utils.c ./src/command/listen.c ./src/command/login.c ./src/command/logout.c ./src/command/register.c ./src/command/save.c ./src/command/startnload.c ./src/structs/item.c ./src/structs/user.c ./src/store/store.c ./src/work/work.c ./src/work/tebakangka.c ./src/work/wordle.c ./src/command/help.c ./src/ADT/stack.c ./src/ADT/linkedlist.c ./src/ADT/map.c ./src/store/cart.c src\Wishlist\Wishlist-add.c src/Wishlist/Wishlist-swap.c src\command\wishlist_remove.c src\Wishlist\Wishlist-clear.c src/store/wishlistshow.c
 
 clean:
 	rm -f ./main.exe ./tests/*.exe

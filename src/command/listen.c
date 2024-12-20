@@ -1,7 +1,12 @@
 #include "listen.h"
 #include <stdio.h>
 #include "./../ADT/utils.h"
-
+#include "./../store/cart.h"
+#include "./../store/wishlistshow.h"
+#include "./../Wishlist/Wishlist-add.h"
+#include "./../Wishlist/Wishlist-swap.h"
+#include "./../Wishlist/Wishlist-clear.h"
+#include "wishlist_remove.h"
 // Function Definition
 void listen(void) {
     // ** Initialization ** //
@@ -71,6 +76,11 @@ void listen(void) {
             Word password = currentWord;
 
             login(&user_list, &logged_user, STRING(username), STRING(password));
+            // DEBUG START
+            cartShow(&logged_user.keranjang,item_list);
+            printUserHistory(&logged_user,100);
+            wishlistshow(&logged_user.wishlist);
+            // DEBUG END
 
         // ** HELP Command ** //
         } else if (str_compare(STRING(currentWord), "HELP")) {
@@ -159,7 +169,7 @@ void listen(void) {
         // COMMAND HISTORY
         } else if (started && isLoggedIn(&logged_user) && str_startwith(STRING(currentWord),"HISTORY")) {
             Word arg = parseWordSpace(2);
-            if (arg.Length == 0) {
+            if (countWords(currentWord) < 2) {
                 printf("Masukan jumlah history yang ingin ditampilkan!\n");
             } else {
                 int limitz = WordToInt(arg);
@@ -169,6 +179,67 @@ void listen(void) {
                     printUserHistory(&logged_user,limitz);
                 }
             }
+        // COMMAND CART ADD <namabarang> <jumlah>
+        } else if (started && isLoggedIn(&logged_user) && str_startwith(STRING(currentWord),"CART ADD")) {
+            Word arg = parseWordSpace(3);
+            // DEBUG START
+                printf("%s\n",arg.TabWord);
+            // DEBUG END
+            if (countWords(currentWord) < 4) {
+                printf("Masukan nama barang dan kuantitas!\n");
+            } else {
+                Word wordbarang = parseUntilNumber(arg);
+                // DEBUG START
+                printf("%s\n",wordbarang.TabWord);
+                // DEBUG END
+                Word kuantitasbarang = parseWhenNumber();
+                // DEBUG START
+                printf("%d\n",WordToInt(kuantitasbarang));
+                // DEBUG END
+                cartAdd(&logged_user.keranjang,wordbarang.TabWord,WordToInt(kuantitasbarang),item_list);
+            }
+        // COMMAND CART REMOVE <namabarang> <jumlah>
+        } else if (started && isLoggedIn(&logged_user) && str_startwith(STRING(currentWord),"CART REMOVE")) {
+            Word arg = parseWordSpace(3);
+            if (countWords(currentWord) < 4) {
+                printf("Masukan nama barang dan kuantitas!\n");
+            } else {
+                Word wordbarang = parseUntilNumber(arg);
+                Word kuantitasbarang = parseWhenNumber();
+                cartRemove(&logged_user.keranjang,wordbarang.TabWord,WordToInt(kuantitasbarang));
+            }
+        // COMMAND CART SHOW
+        } else if (started && isLoggedIn(&logged_user) && str_compare(STRING(currentWord),"CART SHOW")) {
+            cartShow(&logged_user.keranjang,item_list);
+        // COMMAND CART PAY
+        } else if (started && isLoggedIn(&logged_user) && str_compare(STRING(currentWord),"CART PAY")) {
+            cartPay(&logged_user.keranjang,&logged_user.riwayat_pembelian,&logged_user.money,item_list);
+        // COMMAND WISHLIST ADD
+        } else if (started && isLoggedIn(&logged_user) && str_compare(STRING(currentWord),"WISHLIST ADD")) {
+            wishlistadd(&logged_user.wishlist,*item_list);
+        // Wishlist Swap i j
+        } else if (started && isLoggedIn(&logged_user) && str_startwith(STRING(currentWord),"WISHLIST SWAP")) {
+            if (countWords(currentWord) != 4) {
+                printf("Jumlah argumen tidak sesuai. Masukkan 4\n");
+            }
+            int posisi_i = WordToInt(parsenth(currentWord, 3));
+            int posisi_j = WordToInt(parsenth(currentWord, 4));
+            wishlistswap(&logged_user.wishlist,posisi_i,posisi_j);
+        // Wishlist remove
+        } else if (started && isLoggedIn(&logged_user) && str_compare(STRING(currentWord),"WISHLIST REMOVE")) {
+            printf("Masukkan nama barang: ");
+            STARTSENTENCEINPUT();
+            wishlist_remove_name(&logged_user.wishlist,STRING(currentWord));
+        } else if (started && isLoggedIn(&logged_user) && str_startwith(STRING(currentWord),"WISHLIST REMOVE")) {
+            if (countWords(currentWord) != 3) {
+                printf("Jumlah argumen tidak sesuai. Masukkan 3\n");
+            }
+            int posisi_i = WordToInt(parsenth(currentWord, 3));
+            wishlist_remove_index(&logged_user.wishlist,posisi_i);
+        } else if (started && isLoggedIn(&logged_user) && str_compare(STRING(currentWord),"WISHLIST SHOW")) {
+            wishlistshow(&logged_user.wishlist);
+        } else if (started && isLoggedIn(&logged_user) && str_compare(STRING(currentWord),"WISHLIST CLEAR")) {
+            wishlistclear(&logged_user.wishlist);
         }
 
         // ** Update User Data ** //
@@ -176,6 +247,9 @@ void listen(void) {
             User *current = us_getItem(&user_list, i);
             if (str_compare(current->name, logged_user.name)) {
                 current->money = logged_user.money;
+                current->keranjang = logged_user.keranjang;
+                current->riwayat_pembelian = logged_user.riwayat_pembelian;
+                current->wishlist = logged_user.wishlist;
             }
         }
 

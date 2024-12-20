@@ -53,4 +53,12 @@ void CopyString(char *new, const char *str);
 
 Word parseWordSpace(int nthword);
 
+Word parseWhenNumber();
+
+Word parseUntilNumber(Word w);
+
+Word parsenth(Word w, int nth);
+
+int countWords(Word w);
+
 #endif // MESIN_KATA_H

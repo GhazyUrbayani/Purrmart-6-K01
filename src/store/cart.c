@@ -1,4 +1,5 @@
 #include "cart.h"
+#include "./../ADT/utils.h"
 
 void cartAdd(Map* keranjang_user, char* namabarang, int kuantitas, DList* store_items) {
     if (id_search(store_items,namabarang) != -1) {
@@ -6,9 +7,9 @@ void cartAdd(Map* keranjang_user, char* namabarang, int kuantitas, DList* store_
         int lokasi_item = searchMap(keranjang_user,namabarang);
         if (lokasi_item != -1) {
             // Item ada di keranjang
-            int kuantitas_now = getValueMap(keranjang_user, lokasi_item);
+            int kuantitas_now = getValueMap(keranjang_user, namabarang);
             kuantitas_now += kuantitas;
-            updateMap(keranjang_user,lokasi_item,kuantitas_now);
+            updateMap(keranjang_user,namabarang,kuantitas_now);
             printf("Jumlah %s berhasil di-update menjadi %d!\n",namabarang,kuantitas_now);
         } else {
             // Item tidak ada di keranjang
@@ -17,7 +18,7 @@ void cartAdd(Map* keranjang_user, char* namabarang, int kuantitas, DList* store_
         }
     } else {
         // Item tidak ada di toko
-        printf("Barang tidak ada di toko!\n");
+        printf("Barang (%s) tidak ada di toko!\n", namabarang);
     }
 }
 
@@ -56,7 +57,7 @@ void cartShow(Map* keranjang_user, DList* item_store) {
             MapElement currentBarang = keranjang_user->MapElements[i];
             int harga = id_getItem(item_store,id_search(item_store,currentBarang.nama_barang))->price;
             printf("%d\t%s\t%d\n",currentBarang.kuantitas_barang,currentBarang.nama_barang,currentBarang.kuantitas_barang * harga);
-            total_harga += harga;
+            total_harga += currentBarang.kuantitas_barang * harga;
         }
         printf("Total biaya yang harus dikeluarkan adalah %d.\n", total_harga);
     }
@@ -72,32 +73,27 @@ void cartPay(Map* keranjang_user, Stack* riwayat_user, int* uang_user, DList* st
         for (int i = 0; i < keranjang_user->neff; i++) {
             MapElement currentBarang = keranjang_user->MapElements[i];
             int harga = id_getItem(store_items,id_search(store_items,currentBarang.nama_barang))->price;
-            printf("%d\t%s\t%d\n",currentBarang.kuantitas_barang,currentBarang.nama_barang,currentBarang.kuantitas_barang * harga);
-            total_harga += harga;
+            printf("%d\t\t\t%s\t%d\n",currentBarang.kuantitas_barang,currentBarang.nama_barang,currentBarang.kuantitas_barang * harga);
+            total_harga += currentBarang.kuantitas_barang * harga;
         }
         printf("Total biaya yang dikeluarkan adalah %d. Apakah jadi dibeli? (Ya/Tidak): ",total_harga);
         STARTWORDINPUT();
         if (WordEqual(stringToWord("Ya"))) {
-            if (uang_user >= total_harga) {
+            if (*uang_user >= total_harga) {
                 // Find max
-                int lokasi_max = lokasi_max_total(keranjang_user,store_items);
+                char* barangtermahal = transaksi_termahal(keranjang_user,store_items);
                 
                 // Push stack
-                MapElement barang_max_keranjang = keranjang_user->MapElements[lokasi_max];
-                Item* barang_max_toko = id_getItembyName(store_items,barang_max_keranjang.nama_barang);
-
-                int kuantitas_barang_max = barang_max_keranjang.kuantitas_barang;
-                int harga_barang_max = barang_max_toko->price;
-
-                int total_max = kuantitas_barang_max * harga_barang_max;
-                Riwayat max_history = newRiwayat(barang_max_keranjang.nama_barang,total_max);
+                int kuantitastermahal = getValueMap(keranjang_user,barangtermahal);
+                int hargatermahal = id_getItembyName(store_items,barangtermahal)->price;
+                Riwayat max_history = newRiwayat(barangtermahal,kuantitastermahal * hargatermahal);
                 stack_push(riwayat_user,max_history);
                 
                 // Clear Map
                 initMap(keranjang_user);
                 
                 // Kurangi uang user
-                uang_user -= total_harga;
+                *uang_user -= total_harga;
             } else {
                 // Gagal beli: gak ada duit
                 printf("Uang kamu tidak cukup!");
@@ -108,19 +104,22 @@ void cartPay(Map* keranjang_user, Stack* riwayat_user, int* uang_user, DList* st
     }
 }
 
-int lokasi_max_total(Map* keranjang_belanja, DList* toko_barang) {
+char* transaksi_termahal(Map* keranjang_belanja, DList* toko_barang) {
     if (map_isEmpty(keranjang_belanja)) {
-        return -1;
+        printf("Map kosong!\n");
+        return NULL;
     } else {
+        char* barangbiggest = NULL;
         int max = 0;
         for (int i = 0; i < keranjang_belanja->neff; i++) {
             MapElement barang_keranjang = keranjang_belanja->MapElements[i];
-            Item* barang_toko = id_getItem(toko_barang,id_search(toko_barang,barang_keranjang.nama_barang));
+            Item* barang_toko = id_getItembyName(toko_barang,barang_keranjang.nama_barang);
             int total = barang_keranjang.kuantitas_barang * barang_toko->price;
             if (total > max) {
                 max = total;
+                barangbiggest = barang_keranjang.nama_barang;
             }
         }
-        return max;
+        return str_copy(barangbiggest);
     }
 }

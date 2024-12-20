@@ -42,6 +42,18 @@ boolean str_compare(char s1[],char s2[]) {
     return true;
 }
 
+boolean str_startwith(char tobetested[], char teststring[]) {
+    if (str_len(teststring) > str_len(tobetested)) {
+        return false;
+    }
+    while (*teststring != '\0') {
+        if (*teststring++ != *tobetested++) {
+            return false;
+        }
+    }
+    return true;
+}
+
 char *str_concat(char *s1, char *s2) {
     size_t l1 = str_len(s1); size_t l2 = str_len(s2);
     char *s3 = malloc (l1 + l2 + 1);

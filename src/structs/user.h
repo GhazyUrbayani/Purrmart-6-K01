@@ -62,6 +62,7 @@ void us_removeItem(SList *user_list, size_t index);
 User* us_getItem(SList *user_list, size_t index);
 void us_setItem(SList *user_list, size_t index, User *user);
 void us_clearList(SList *user_list);
+void us_printList(SList *list);
 
 void us_ReadUser(SList *user_list);
 void us_WriteUsers(SList *user_list, FILE *file);
@@ -73,4 +74,8 @@ void us_WriteUsers(SList *user_list, FILE *file);
 boolean us_isUserin(SList *userList, User *user);
 
 size_t us_search(SList *userList, User *user);
+
+void printProfile(User* user);
+
+void printUserHistory(User* user, int limitt);
 #endif

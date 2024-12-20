@@ -63,6 +63,9 @@ void id_setItem(DList *list, size_t index, Item *item);
 void id_clearList(DList *list);
 void id_freeList(DList *list);
 
+int id_search(DList *list, char* namabarang);
+Item* id_getItembyName(DList* list, char* namabarang);
+
 void ReadItem(DList *itemList);
 void WriteItems(DList *items, FILE *file);
 

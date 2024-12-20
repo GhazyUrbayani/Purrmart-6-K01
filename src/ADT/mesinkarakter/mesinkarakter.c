@@ -13,7 +13,6 @@ void START(const char *filename) {
     pita = fopen(filename, "r");
     if (pita == NULL) {
         EOP = true;
-        fprintf(stderr, "Error: File '%s' tidak ditemukan atau tidak dapat dibuka.\n", filename);
         return;
     }
     ADV();  // Memulai pembacaan karakter pertama

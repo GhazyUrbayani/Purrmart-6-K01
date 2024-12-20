@@ -48,6 +48,14 @@ void us_clearList(SList *list) {
     s_clearList(list);
 }
 
+void us_printList(SList *list) {
+    int ukuran_list = list->size;
+    for (int i = 0; i < ukuran_list; i++) {
+        User* thisuser = us_getItem(list,i);
+        printf("%s %s %d\n", thisuser->name, thisuser->password, thisuser->money);
+    }
+}
+
 void us_ReadUser(SList *userList) {
     ADVWORD();
     int uang_user = WordToInt(currentWord);
@@ -65,7 +73,7 @@ void us_ReadUser(SList *userList) {
 
     ADVWORD();
     int jumlah_riwayat_pembelian = WordToInt(currentWord);
-    for (int i = 0; i < jumlah_riwayat_pembelian; i++) {
+    for (int j = 0; j < jumlah_riwayat_pembelian; j++) {
         ADVWORD();
         int total_biaya = WordToInt(currentWord);
         ADVSENTENCENL();
@@ -75,7 +83,7 @@ void us_ReadUser(SList *userList) {
     }
     ADVWORD();
     int jumlah_wishlist = WordToInt(currentWord);
-    for (int i = 0; i < jumlah_wishlist; i++) {
+    for (int j = 0; j < jumlah_wishlist; j++) {
         ADVSENTENCENL();
         char* nama_barang = str_copy(currentWord.TabWord);
         ll_insert(&user.wishlist,nama_barang);
@@ -88,9 +96,10 @@ void us_WriteUsers(SList *users, FILE *file) {
         User *user = (User *)users->items[i];
         fprintf(file, "%d %s %s\n", user->money, user->name, user->password);
         int jumlah_riwayat = user->riwayat_pembelian.top+1;
-        fprintf(file, "%d",jumlah_riwayat);
+        fprintf(file, "%d\n",jumlah_riwayat);
         print_stackToFile(&user->riwayat_pembelian,file);
         int jumlah_wishlist = ll_count(&user->wishlist);
+        fprintf(file, "%d\n",jumlah_wishlist);
         ll_printToFile(&user->wishlist,file);
     }
 }
@@ -113,4 +122,22 @@ size_t us_search(SList *userList, User *user) {
         }
     }
     return -1;
+}
+
+void printProfile(User* user) {
+    printf("Nama: %s\nUang: %d\n", user->name, user->money);
+}
+
+void printUserHistory(User* user, int limit) {
+    if (stack_isEmpty(&user->riwayat_pembelian)) {
+        printf("Kamu belum membeli barang apapun!\n");
+        return;
+    } else if (limit > user->riwayat_pembelian.top+1) {
+        limit = user->riwayat_pembelian.top + 1;
+    }
+    printf("Riwayat Pembelian barang:\n");
+    for (int i = 0; i < limit; i++) {
+        Riwayat currentRiwayat = user->riwayat_pembelian.elemen[i];
+        printf("%d. %s %d\n", i+1, currentRiwayat.nama_barang, currentRiwayat.harga);
+    }
 }

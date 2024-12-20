@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include "./boolean.h"
+#include "./mesinkata/mesinkata.h"
 
 /**
  * @brief Menyalin memori dari sumber ke tujuan.
@@ -24,6 +25,8 @@ void* alokasi_salin(const void *item, size_t itemSize);
 /// @param s2 string kedua
 /// @return returns true jika kedua string sama.
 boolean str_compare(char s1[],char s2[]);
+
+boolean str_startwith(char* tobetested, char* teststring);
 /* 
     Kasuses:
     1. s1 ATAU s2 kosong

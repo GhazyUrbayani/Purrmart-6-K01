@@ -22,7 +22,8 @@ void help_l(){
     printf("==================================== Login Menu Help PURRMART ====================================\n");
     printf (" 1. REGISTER -> Untuk melakukan pendaftaran akun baru\n");
     printf (" 2. LOGIN -> Untuk masuk ke dalam akun dan memulai sesi\n");
-    printf (" 3. EXIT -> Untuk keluar dari program\n");
+    printf (" 3. SAVE -> Untuk menyimpan state ke dalam file\n");
+    printf (" 4. EXIT -> Untuk keluar dari program\n");
 }
 
 void help_m(){

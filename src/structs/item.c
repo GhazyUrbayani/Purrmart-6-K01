@@ -3,6 +3,7 @@
 
 #include "./../ADT/mesinkata/mesinkata.h" 
 #include <stdio.h>
+#include "./../ADT/utils.h"
 
 /* Membuat Barang baru */
 void CreateItem(Item *b, char name[], int price) {
@@ -79,6 +80,25 @@ void id_clearList(DList *list) {
 }
 void id_freeList(DList *list) {
     d_freeList(list);
+}
+
+int id_search(DList *list, char* namabarang) {
+    if (list->size == 0) {
+        return -1;
+    } else {
+        for (int i = 0; i < list->size; i++) {
+            Item* currentItem = id_getItem(list,i);
+            if (str_compare(currentItem->name,namabarang)) {
+                return i;
+            }
+        }
+    }
+    return -1;
+}
+
+Item* id_getItembyName(DList* list, char* namabarang) {
+    int index_barang = id_search(list,namabarang);
+    return id_getItem(list,index_barang);
 }
 
 void ReadItem(DList *itemList) {

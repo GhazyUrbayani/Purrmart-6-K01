@@ -12,7 +12,6 @@ int STARTWORD(const char *filename) {
         ADVWORD();
         return true;
     } else {
-        fprintf(stderr, "Error: File kosong atau tidak bisa dibaca.\n");
         return 0;
     }
 }
@@ -70,6 +69,7 @@ void ADVWORD(void) {
 
 // Membaca kalimat hingga menemukan karakter newline.
 void ADVSENTENCENL(void) {
+    IgnoreBlank();
     int i = 0;
     while (!EOP && currentChar != NEWLINE && i < MESINKATA_NMax) {
         currentWord.TabWord[i] = currentChar;
@@ -134,4 +134,29 @@ void CopyString(char *new, const char *str) {
         i++;
     }
     new[i] = '\0';
+}
+
+Word parseWordSpace(int nthword) {
+    int current_nthword = 1;
+
+    Word new; new.Length = 0;
+    char* cursor = currentWord.TabWord;
+    while (*cursor != '\0' && current_nthword != nthword) {
+        if (*cursor == ' ') {
+            current_nthword++;
+        }
+        cursor++;
+    }
+
+    while (*cursor == ' ' && *cursor !='\0') {
+        cursor++;
+    }
+
+    while (*cursor != '\0') {
+        new.TabWord[new.Length++] = *cursor++;
+    }
+
+    new.TabWord[new.Length] = '\0';
+
+    return new;
 }

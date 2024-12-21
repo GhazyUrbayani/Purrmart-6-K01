@@ -50,16 +50,27 @@ void cartShow(Map* keranjang_user, DList* item_store) {
     if (keranjang_user->neff == 0) {
         printf("Keranjang kamu kosong!\n");
     } else {
-        printf("Berikut adalah isi keranjangmu.\n");
-        printf("Kuantitas\tNama\tTotal\n");
+        printf("\n===================== Isi Keranjangmu =====================\n");
+        printf("%-5s %-20s %-10s\n", "Qty", "Nama Barang", "Total");
+        printf("----------------------------------------------------------\n");
+
         int total_harga = 0;
         for (int i = 0; i < keranjang_user->neff; i++) {
             MapElement currentBarang = keranjang_user->MapElements[i];
-            int harga = id_getItem(item_store,id_search(item_store,currentBarang.nama_barang))->price;
-            printf("%d\t%s\t%d\n",currentBarang.kuantitas_barang,currentBarang.nama_barang,currentBarang.kuantitas_barang * harga);
-            total_harga += currentBarang.kuantitas_barang * harga;
+            int harga = id_getItem(item_store, id_search(item_store, currentBarang.nama_barang))->price;
+            int total = currentBarang.kuantitas_barang * harga;
+
+            printf("%-5d %-20s %-10d\n", 
+                   currentBarang.kuantitas_barang, 
+                   currentBarang.nama_barang, 
+                   total);
+
+            total_harga += total;
         }
-        printf("Total biaya yang harus dikeluarkan adalah %d.\n", total_harga);
+
+        printf("----------------------------------------------------------\n");
+        printf("Total Biaya: %d\n", total_harga);
+        printf("==========================================================\n");
     }
 }
 
@@ -67,16 +78,26 @@ void cartPay(Map* keranjang_user, Stack* riwayat_user, int* uang_user, DList* st
     if (map_isEmpty(keranjang_user)) {
         printf("Keranjang kamu kosong!\n");
     } else {
-        printf("Kamu akan membeli barang-barang berikut.\n");
-        printf("Kuantitas\tNama\tTotal\n");
+        printf("\n=========================================================================\n");
+        printf("                            Barang yang akan dibeli                      \n");
+        printf("=========================================================================\n");
+         printf("Qty         Nama Barang                  Total\n");
+        printf("-------------------------------------------------------------------------\n");
+
         int total_harga = 0;
         for (int i = 0; i < keranjang_user->neff; i++) {
             MapElement currentBarang = keranjang_user->MapElements[i];
-            int harga = id_getItem(store_items,id_search(store_items,currentBarang.nama_barang))->price;
-            printf("%d\t\t\t%s\t%d\n",currentBarang.kuantitas_barang,currentBarang.nama_barang,currentBarang.kuantitas_barang * harga);
+            int harga = id_getItem(store_items, id_search(store_items, currentBarang.nama_barang))->price;
+
+            printf("%-11d %-30s %-10d\n", 
+                   currentBarang.kuantitas_barang, 
+                   currentBarang.nama_barang, 
+                   currentBarang.kuantitas_barang * harga);
+
             total_harga += currentBarang.kuantitas_barang * harga;
         }
-        printf("Total biaya yang dikeluarkan adalah %d. Apakah jadi dibeli? (Ya/Tidak): ",total_harga);
+        printf("-------------------------------------------------------------------------\n");
+        printf("Total biaya yang harus dikeluarkan adalah: %d. Apakah jadi dibeli? (Ya/Tidak): ", total_harga);
         STARTWORDINPUT();
         if (WordEqual(stringToWord("Ya"))) {
             if (*uang_user >= total_harga) {
@@ -94,11 +115,13 @@ void cartPay(Map* keranjang_user, Stack* riwayat_user, int* uang_user, DList* st
                 
                 // Kurangi uang user
                 *uang_user -= total_harga;
+                printf("Transaksi berhasil!\n");
             } else {
                 // Gagal beli: gak ada duit
                 printf("Uang kamu tidak cukup!\n");
             }
         } else {
+            printf("Transaksi gagal!\n");
             return;
         }
     }

@@ -125,7 +125,18 @@ size_t us_search(SList *userList, User *user) {
 }
 
 void printProfile(User* user) {
-    printf("Nama: %s\nUang: %d\n", user->name, user->money);
+    printf("================================================================================\n");
+    printf("                               PROFIL PENGGUNA                                  \n");
+    printf("================================================================================\n");
+    printf("                                   /\\_/\\                        Halo, %s!      \n", user->name);
+    printf("                                  ( o.o )                                       \n");
+    printf("                                   > ^ <                                        \n");
+    printf("================================================================================\n");
+    printf("Nama  : %s\n", user->name);
+    printf("Uang  : %d\n", user->money);
+    printf("================================================================================\n");
+    printf("                          TERIMA KASIH SUDAH BERKUNJUNG                         \n");
+    printf("================================================================================\n");
 }
 
 void printUserHistory(User* user, int limit) {

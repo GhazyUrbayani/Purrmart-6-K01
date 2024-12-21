@@ -43,6 +43,7 @@ void store_supply(Queue *item_queue, DList *item_list) {
     Item *peeked = ipeekQueue(item_queue);
     char *item_name = peeked->name;
     printf("Apakah kamu ingin menambahkan barang %s?: ", item_name);
+    printf("TERIMA/TUNDA/TOLAK\n");
     STARTWORDINPUT();
     if (str_compare(STRING(currentWord),"TERIMA")) {
         printf("Harga barang: ");

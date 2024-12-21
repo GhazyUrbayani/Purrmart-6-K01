@@ -4,11 +4,14 @@
 #include "Wishlist-swap.h"
 
 void wishlistswap(LinkedList* wishlist, int idx1, int idx2) {
+     if (idx1<0 || idx2<0) {
+        printf("Index tidak valid! (Pastikan mulai dari 1 dan sesuai jumlah wishlist)\n");
+        return;
+    }
     if (idx1 == idx2) {
         printf("Index sama!\n");
         return;
     }
-
     // Get the nodes at the specified indices
     linkednode* node1 = ll_get_node_at(wishlist, idx1);
     linkednode* node2 = ll_get_node_at(wishlist, idx2);

@@ -12,18 +12,20 @@ void help(boolean started,boolean logged) {
 }
 
 void help_s(){
-    printf("=================================== Welcome Menu Help PURRMART ===================================\n");
+    printf("============================== Welcome Menu Help PURRMART ===============================\n");
     printf (" 1. START -> Untuk masuk sesi baru\n");
     printf (" 2. LOAD -> Untuk memulai sesi berdasarkan file konfigurasi\n");
     printf (" 3. EXIT -> Untuk keluar dari program\n");
+    printf("=========================================================================================\n");
 }
 
 void help_l(){
-    printf("==================================== Login Menu Help PURRMART ====================================\n");
+    printf("================================ Login Menu Help PURRMART ================================\n");
     printf (" 1. REGISTER -> Untuk melakukan pendaftaran akun baru\n");
     printf (" 2. LOGIN -> Untuk masuk ke dalam akun dan memulai sesi\n");
     printf (" 3. SAVE -> Untuk menyimpan state ke dalam file\n");
     printf (" 4. EXIT -> Untuk keluar dari program\n");
+    printf("=========================================================================================\n");
 }
 
 void help_m(){
@@ -48,4 +50,5 @@ void help_m(){
     printf (" 18. LOGOUT -> Untuk keluar dari sesi\n");
     printf (" 19. SAVE -> Untuk menyimpan state ke dalam file\n");
     printf (" 20. EXIT -> Untuk keluar dari program\n");
+    printf("=========================================================================================\n");
 }

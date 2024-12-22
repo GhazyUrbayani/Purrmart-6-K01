@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "set.h"
+#include "../src/ADT/set.h"
 
 int main() {
     Set s1, s2, result;

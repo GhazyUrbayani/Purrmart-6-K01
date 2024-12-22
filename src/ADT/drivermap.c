@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "map.h"
+#include "../src/ADT/map.h"
 
 int main() {
     printf("=== Test Map===\n\n");

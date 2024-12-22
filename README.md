@@ -1,6 +1,6 @@
 # PURRMART-CLI
 
-**PURRMART** adalah aplikasi simulasi berbasis **Command Line Interface (CLI)** yang dikembangkan sebagai tugas besar mata kuliah Algoritma dan Struktur Data (IF2111). Aplikasi ini mensimulasikan aktivitas jual beli pada e-commerce dengan menggunakan berbagai fitur interaktif.
+**PURRMART** adalah aplikasi simulasi berbasis **Command Line Interface (CLI)** yang dikembangkan sebagai tugas besar mata kuliah Algoritma dan Struktur Data (IF2111). Aplikasi ini menyimulasikan aktivitas jual beli pada e-commerce dengan menggunakan berbagai fitur interaktif.
 
 ---
 
@@ -12,7 +12,7 @@
 5. **Menyimpan dan Memuat Progress**: Simpan state aplikasi dan muat kembali dari file konfigurasi.
 6. **Sistem Keranjang Barang**: Memasukkan, mengeluarkan, hingga menampilkan barang-barang pada keranjang.
 7. **Melakukan Pembayaran Barang di Keranjang**: Membeli barang-barang yang berada di dalam keranjang, akan mengurangi jumlah uang.
-8. **Sistem Wishlist**: Memungkinkan pengguna untuk menambah, mengurangi, dan menampilkan barang hingga menukar posisi barang-barang dalam wishlist.
+8. **Sistem Wishlist**: Memungkinkan pengguna untuk menambah, mengurangi, dan menukar posisi barang hingga menampilkan barang-barang dalam wishlist.
 9. **Riwayat Pembelian**: Menampilkan riwayat pembelian yang telah dilakukan sebelumnya
 10. **Mekanisme Profile**: Melihat data diri pengguna untuk suatu akun tertentu
 
@@ -34,6 +34,7 @@
 - ├── src/              # Source code utama
 - │   ├── ADT/            # Folder berisi ADT yang digunakan
 - │   ├── command/        # Folder berisi file-file commands
+- │   ├── Wishlist/        # Folder berisi file-file commands yang khusus untuk Wishlist
 - │   ├── store/          # Folder berisi implementasi STORE dan CART
 - │   ├── structs/        # Folder berisi implementasi USER dan ITEM
 - │   ├── work/           # Folder berisi implementasi WORK, WORDLE, dan GAME
@@ -46,10 +47,10 @@
 ---
 
 ## Identitas Kelompok
-- Nama Anggota 1: [	Inggried Amelia Deswanty] (NIM: 18223035)
-- Nama Anggota 2: [	M. Andiananto Bismaramadhan] (NIM: 18221028)
-- Nama Anggota 3: [	Muhammad Faiz Alfikrona] (NIM: 18223009)
-- Nama Anggota 4: [	Noeriza Aqila Wibawa] (NIM: 18223095)
+- Nama Anggota 1: [Inggried Amelia Deswanty] (NIM: 18223035)
+- Nama Anggota 2: [M. Andiananto Bismaramadhan] (NIM: 18221028)
+- Nama Anggota 3: [Muhammad Faiz Alfikrona] (NIM: 18223009)
+- Nama Anggota 4: [Noeriza Aqila Wibawa] (NIM: 18223095)
 - Nama Anggota 5: [Ghazy Achmed Movlech Urbayani] (NIM: 18223093)
 
 ---

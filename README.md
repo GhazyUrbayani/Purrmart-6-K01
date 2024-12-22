@@ -10,6 +10,11 @@
 3. **Bekerja untuk Menghasilkan Uang**: Pilih pekerjaan atau tantangan untuk mendapatkan uang virtual.
 4. **Mekanisme Login dan Register**: Buat akun atau masuk dengan kredensial pengguna.
 5. **Menyimpan dan Memuat Progress**: Simpan state aplikasi dan muat kembali dari file konfigurasi.
+6. **Sistem Keranjang Barang**: Memasukkan, mengeluarkan, hingga menampilkan barang-barang pada keranjang.
+7. **Melakukan Pembayaran Barang di Keranjang**: Membeli barang-barang yang berada di dalam keranjang, akan mengurangi jumlah uang.
+8. **Sistem Wishlist**: Memungkinkan pengguna untuk menambah, mengurangi, dan menampilkan barang hingga menukar posisi barang-barang dalam wishlist.
+9. **Riwayat Pembelian**: Menampilkan riwayat pembelian yang telah dilakukan sebelumnya
+10. **Mekanisme Profile**: Melihat data diri pengguna untuk suatu akun tertentu
 
 ---
 

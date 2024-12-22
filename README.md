@@ -34,9 +34,9 @@
 - ├── src/              # Source code utama
 - │   ├── ADT/            # Folder berisi ADT yang digunakan
 - │   ├── command/        # Folder berisi file-file commands
-- │   ├── store/          # Folder berisi implementasi STORE
+- │   ├── store/          # Folder berisi implementasi STORE dan CART
 - │   ├── structs/        # Folder berisi implementasi USER dan ITEM
-- │   ├── work/           # Folder berisi implementasi WORK dan WORK CHALLENGE
+- │   ├── work/           # Folder berisi implementasi WORK, WORDLE, dan GAME
 - │   └── main.c          # Entry point aplikasi
 - ├── tests/            # Folder berisi tests untuk beberapa fitur program
 - ├── Makefile          # Makefile untuk membuat program dan tests

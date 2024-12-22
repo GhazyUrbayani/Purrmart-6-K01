@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "linkedlist.h"
+#include "../src/ADT/linkedlist.h"
 #include <stdlib.h>
 
 // driver linkedlist

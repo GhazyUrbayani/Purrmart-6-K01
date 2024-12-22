@@ -77,9 +77,9 @@ void listen(void) {
 
             login(&user_list, &logged_user, STRING(username), STRING(password));
             // DEBUG START
-            cartShow(&logged_user.keranjang,item_list);
-            printUserHistory(&logged_user,100);
-            wishlistshow(&logged_user.wishlist);
+          //cartShow(&logged_user.keranjang,item_list);
+          //printUserHistory(&logged_user,100);
+         // wishlistshow(&logged_user.wishlist);
             // DEBUG END
 
         // ** HELP Command ** //

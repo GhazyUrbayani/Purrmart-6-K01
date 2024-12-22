@@ -15,11 +15,7 @@ typedef struct {
 
 void CartAdd(Set *S, Cart *C, char *item, int qty);
 /* Menambahkan barang (item) dan kuantitas (qty) ke keranjang. */
-
 void CartRemove(Set *S, Cart *C, char *item, int qty);
 /* Mengurangi barang (item) sejumlah (qty) dari keranjang. */
-
-boolean IsAvailableInStore(char *item);
-/* Mengecek apakah barang (item) tersedia di toko. */
 
 #endif

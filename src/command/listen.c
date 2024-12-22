@@ -182,21 +182,17 @@ void listen(void) {
         // COMMAND CART ADD <namabarang> <jumlah>
         } else if (started && isLoggedIn(&logged_user) && str_startwith(STRING(currentWord),"CART ADD")) {
             Word arg = parseWordSpace(3);
-            // DEBUG START
-                printf("%s\n",arg.TabWord);
-            // DEBUG END
             if (countWords(currentWord) < 4) {
                 printf("Masukan nama barang dan kuantitas!\n");
             } else {
-                Word wordbarang = parseUntilNumber(arg);
-                // DEBUG START
-                printf("%s\n",wordbarang.TabWord);
-                // DEBUG END
+                Word namabarang = parseUntilNumber(arg);
                 Word kuantitasbarang = parseWhenNumber();
-                // DEBUG START
-                printf("%d\n",WordToInt(kuantitasbarang));
-                // DEBUG END
-                cartAdd(&logged_user.keranjang,wordbarang.TabWord,WordToInt(kuantitasbarang),item_list);
+                int jumlah = WordToInt(kuantitasbarang);
+                if (jumlah > 0) {
+                    cartAdd(&logged_user.keranjang, namabarang.TabWord, jumlah, item_list);
+                } else {
+                    printf("Masukan kuantitas yang valid\n");
+                }
             }
         // COMMAND CART REMOVE <namabarang> <jumlah>
         } else if (started && isLoggedIn(&logged_user) && str_startwith(STRING(currentWord),"CART REMOVE")) {
@@ -204,9 +200,14 @@ void listen(void) {
             if (countWords(currentWord) < 4) {
                 printf("Masukan nama barang dan kuantitas!\n");
             } else {
-                Word wordbarang = parseUntilNumber(arg);
+                Word namabarang = parseUntilNumber(arg);
                 Word kuantitasbarang = parseWhenNumber();
-                cartRemove(&logged_user.keranjang,wordbarang.TabWord,WordToInt(kuantitasbarang));
+                int jumlah = WordToInt(kuantitasbarang);
+                if (jumlah > 0) {
+                    cartRemove(&logged_user.keranjang, namabarang.TabWord, jumlah);
+                } else {
+                    printf("Masukan kuantitas yang valid\n");
+                }
             }
         // COMMAND CART SHOW
         } else if (started && isLoggedIn(&logged_user) && str_compare(STRING(currentWord),"CART SHOW")) {

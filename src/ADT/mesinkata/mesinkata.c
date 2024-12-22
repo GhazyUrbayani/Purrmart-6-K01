@@ -95,15 +95,19 @@ boolean WordEqual(Word w) {
 
 //Mengonversi kata menjadi bilangan integer.
 int WordToInt(Word w) {
-    int result = 0;
-    for (int i = 0; i < w.Length; i++) {
+    int result = 0, sign = 1, i = 0;
+    if (w.TabWord[0] == '-') {
+        sign = -1;
+        i = 1;
+    }
+    for (; i < w.Length; i++) {
         if (w.TabWord[i] >= '0' && w.TabWord[i] <= '9') {
             result = result * 10 + (w.TabWord[i] - '0');
         } else {
-            return -1; // Mengembalikan -1 jika ada karakter bukan angka
+            return -1;
         }
     }
-    return result;
+    return result * sign;
 }
 
 // Menampilkan kata ke output.
@@ -164,27 +168,40 @@ Word parseWordSpace(int nthword) {
 Word parseWhenNumber() {
     Word new; new.Length = 0;
     char* cursor = currentWord.TabWord;
-    while (*cursor != '\0' && *cursor < '0' || *cursor > '9') {
+    while (*cursor != '\0') {
+        if (*cursor == ' ') {
+            char* next = cursor + 1;
+            if (*next >= '0' && *next <= '9') {
+                cursor = next; 
+                break;
+            }
+        }
         cursor++;
     }
-
     while (*cursor != '\0') {
         new.TabWord[new.Length++] = *cursor++;
     }
-
     new.TabWord[new.Length] = '\0';
-    
     return new;
 }
 
 Word parseUntilNumber(Word w) {
     Word new; new.Length = 0;
     char* cursor = w.TabWord;
-    while (*cursor != '\0' && (*cursor < '0' || *cursor > '9')) {
+    boolean IsNum = false;
+    
+    while (*cursor != '\0') {
+        if ((*cursor >= '0' && *cursor <= '9') && 
+            (new.Length > 0 && new.TabWord[new.Length-1] == ' ')) {
+            IsNum = true;
+            break;
+        }
         new.TabWord[new.Length++] = *cursor++;
     }
-    new.TabWord[--new.Length] = '\0';
-
+    if (new.Length > 0 && new.TabWord[new.Length-1] == ' ') {
+        new.Length--;
+    }
+    new.TabWord[new.Length] = '\0';
     return new;
 }
 

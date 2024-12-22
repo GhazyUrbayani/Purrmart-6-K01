@@ -168,41 +168,69 @@ Word parseWordSpace(int nthword) {
 Word parseWhenNumber() {
     Word new; new.Length = 0;
     char* cursor = currentWord.TabWord;
-    while (*cursor != '\0') {
-        if (*cursor == ' ') {
-            char* next = cursor + 1;
-            if (*next >= '0' && *next <= '9') {
-                cursor = next; 
+    char* spasiAkhir = NULL;
+    char* end = cursor;
+    while (*end != '\0') {
+        if (*end == ' ') {
+            spasiAkhir = end;
+        }
+        end++;
+    }
+    if (spasiAkhir != NULL) {
+        cursor = spasiAkhir + 1;
+        boolean IsNum = true;
+        char* check = cursor;
+        while (*check != '\0') {
+            if (*check < '0' || *check > '9') {
+                IsNum = false;
                 break;
             }
-        }
-        cursor++;
-    }
-    while (*cursor != '\0') {
-        new.TabWord[new.Length++] = *cursor++;
-    }
-    new.TabWord[new.Length] = '\0';
-    return new;
+            check++;
+       }
+       
+       if (IsNum) {
+           while (*cursor != '\0') {
+               new.TabWord[new.Length++] = *cursor++;
+           }
+       }
+   }
+   new.TabWord[new.Length] = '\0';
+   return new;
 }
 
 Word parseUntilNumber(Word w) {
     Word new; new.Length = 0;
     char* cursor = w.TabWord;
-    boolean IsNum = false;
-    
-    while (*cursor != '\0') {
-        if ((*cursor >= '0' && *cursor <= '9') && 
-            (new.Length > 0 && new.TabWord[new.Length-1] == ' ')) {
-            IsNum = true;
-            break;
+    char* spasiAkhir = NULL;
+    char* end = cursor;
+    while (*end != '\0') {
+        if (*end == ' ') {
+            spasiAkhir = end;
         }
-        new.TabWord[new.Length++] = *cursor++;
+        end++;
     }
-    if (new.Length > 0 && new.TabWord[new.Length-1] == ' ') {
-        new.Length--;
+    if (spasiAkhir != NULL) {
+        char* check = spasiAkhir + 1;
+        boolean IsNum = true;
+        while (*check != '\0') {
+            if (*check < '0' || *check > '9') {
+                IsNum = false;
+                break;
+            }
+            check++;
+        }
+        if (IsNum) {
+            while (cursor < spasiAkhir) {
+                new.TabWord[new.Length++] = *cursor++;
+            }
+        } else {
+            while (*cursor != '\0') {
+                new.TabWord[new.Length++] = *cursor++;
+            }
+        }
     }
-    new.TabWord[new.Length] = '\0';
-    return new;
+   new.TabWord[new.Length] = '\0';
+   return new;
 }
 
 Word parsenth(Word w, int nth) {

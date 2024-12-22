@@ -1,9 +1,10 @@
 #include "cart.h"
+#include "store.h"
 
-void CartAdd(Set *S, Cart *C, Store *store, char *item, int qty) {
+void CartAdd(Set *S, Cart *C, DList *item_list, char *item, int qty) {
     boolean found = false;
-    for (int i = 0; i < store->count; i++) {
-        if (str_compare(store->items[i], item)) {
+    for (int i = 0; i < item_list->size; i++) {
+        if (str_compare(id_getItem(item_list, i)->name, item)) {
             found = true;
             break;
         }
